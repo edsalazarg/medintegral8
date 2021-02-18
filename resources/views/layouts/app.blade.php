@@ -10,6 +10,7 @@
 <body>
     <a href="{{route('home.index')}}">Home</a>
     <a href="{{route('home.contact')}}">Contact</a>
+    <a href="{{route('patients.index')}}">Patients</a>
     <div class="container ">
         @if(session('status'))
             <div class="alert alert-success">

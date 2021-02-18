@@ -2,30 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PatientPost;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PatientsController extends Controller
 {
-    private $patients = [
-        1 => [
-            'name' => 'Eduardo Salazar',
-            'code' => 216306967,
-            'age' => 19,
-        ],
-        2 => [
-            'name' => 'Lalo Salazar',
-            'code' => 154514587,
-            'age' => 24,
-        ],
-        3 => [
-            'name' => 'Jesus Salazar',
-            'code' => 156484151,
-            'age' => 25,
-        ]
-    ];
     public function index()
     {
-        return view('patients.index', ['patients' => $this->patients]);
+        return view('patients.index', ['patients' => Patient::all()]);
     }
 
     /**
@@ -35,7 +20,7 @@ class PatientsController extends Controller
      */
     public function create()
     {
-        //
+        return view('patients.create');
     }
 
     /**
@@ -44,16 +29,20 @@ class PatientsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatientPost $request)
     {
-        //
+        $validated = $request->validated();
+        $patient = Patient::create($validated);
+
+        $request->session()->flash('status', 'The patient was created!');
+
+        return redirect()->route('patients.show', ['patient' => $patient->id]);
     }
 
     public function show($id)
     {
-        abort_if(!isset($this->patients[$id]), 404);
 
-        return view('patients.show', ['patient' => $this->patients[$id]]);
+        return view('patients.show', ['patient' => Patient::findOrFail($id)]);
     }
 
     /**
