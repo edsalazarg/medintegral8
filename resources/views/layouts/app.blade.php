@@ -13,7 +13,7 @@
     <a href="{{route('patients.index')}}">Patients</a>
     <div class="container ">
         @if(session('status'))
-            <div class="alert alert-success">
+            <div style="background-color: red">
                 {{session('status')}}
             </div>
         @endif

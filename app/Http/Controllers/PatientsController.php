@@ -13,22 +13,12 @@ class PatientsController extends Controller
         return view('patients.index', ['patients' => Patient::all()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('patients.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(PatientPost $request)
     {
         $validated = $request->validated();
@@ -45,37 +35,30 @@ class PatientsController extends Controller
         return view('patients.show', ['patient' => Patient::findOrFail($id)]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        return view('patients.edit', ['patient' => Patient::findOrFail($id)]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(PatientPost $request, $id)
     {
-        //
+        $patient =  Patient::findOrFail($id);
+        $validated = $request->validated();
+        $patient->fill($validated);
+        $patient->save();
+
+        $request->session()->flash('status', 'The patient was updated!');
+
+        return redirect()->route('patients.show', ['patient' => $patient->id]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $patient = Patient::findOrFail($id);
+        $patient->delete();
+
+        session()->flash('status', 'The patient was deleted!');
+
+        return redirect()->route('patients.index');
     }
 }

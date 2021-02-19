@@ -1,10 +1,7 @@
 <div>
     <label for="firstName">Nombre</label>
-    <input id="firstName" type="text" name="title" value="{{ old('firstName', optional($patient ?? null)->firstName) }}">
+    <input id="firstName" type="text" name="firstName" value="{{ old('firstName', optional($patient ?? null)->firstName) }}">
 </div>
-@error('title')
-    <div>{{$message}}</div>
-@enderror
 <div>
     <label for="lastName">Apellidos</label>
     <input id="lastName" type="text" name="lastName" value="{{ old('lastName', optional($patient ?? null)->lastName) }}">
