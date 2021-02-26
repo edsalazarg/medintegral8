@@ -26,6 +26,22 @@
         <p>Asthma: {{$patient->medrecord->asthma ? "Yes" : "No"}}</p>
     @endif
 
+    <h2> Surgeries </h2>
+    @forelse($patient->medrecord->surgeries as $surgery)
+        <hr>
+        <p>Date: {{$surgery->date}}</p>
+        <p>Surgery: {{$surgery->surgery}}</p>
+    @empty
+        <p>No Surgeries for Patient!</p>
+    @endforelse
+
+    <h2> Allergies </h2>
+    @forelse($patient->medrecord->allergies as $allergy)
+        <p>Allergy: {{$allergy->allergy}}</p>
+    @empty
+        <p>No Allergies for Patient!</p>
+    @endforelse
+
     <h1> Appointments </h1>
 
     @forelse($patient->appointment as $appointment)

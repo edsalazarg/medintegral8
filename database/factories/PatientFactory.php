@@ -2,9 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Allergies;
 use App\Models\Appointment;
 use App\Models\MedRecord;
 use App\Models\Patient;
+use App\Models\Surgeries;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PatientFactory extends Factory
@@ -41,6 +43,8 @@ class PatientFactory extends Factory
 
         })->afterCreating(function (Patient $patient) {
             $patient->medrecord()->save(MedRecord::factory()->make());
+            $patient->medrecord->surgeries()->save(Surgeries::factory()->make());
+            $patient->medrecord->surgeries()->save(Allergies::factory()->make());
             $patient->appointment()->save(Appointment::factory()->make());
         });
     }

@@ -13,4 +13,14 @@ class MedRecord extends Model
     {
         return $this->belongsTo('App\Models\Patient');
     }
+
+    public function surgeries()
+    {
+        return $this->hasMany('App\Models\Surgeries');
+    }
+
+    public function allergies()
+    {
+        return $this->hasMany('App\Models\Allergies');
+    }
 }

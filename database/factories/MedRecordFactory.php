@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Allergies;
 use App\Models\MedRecord;
+use App\Models\Surgeries;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MedRecordFactory extends Factory
@@ -28,6 +30,16 @@ class MedRecordFactory extends Factory
             'epilepsy' => $this->faker->randomElement([0,1]),
             'asthma' => $this->faker->randomElement([0,1]),
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterMaking(function (MedRecord $medRecord) {
+
+        })->afterCreating(function (MedRecord $medRecord) {
+            $medRecord->surgeries()->save(Surgeries::factory()->make());
+            $medRecord->allergies()->save(Allergies::factory()->make());
+        });
     }
 
 
