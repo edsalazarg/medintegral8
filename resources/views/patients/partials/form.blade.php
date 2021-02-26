@@ -7,6 +7,10 @@
     <input id="lastName" type="text" name="lastName" value="{{ old('lastName', optional($patient ?? null)->lastName) }}">
 </div>
 <div>
+    <label for="email">Correo</label>
+    <input id="email" type="email" name="email" value="{{ old('email', optional($patient ?? null)->email) }}">
+</div>
+<div>
     <label for="department">Departamento</label>
     <input id="department" type="text" name="department" value="{{ old('department', optional($patient ?? null)->department) }}">
 </div>

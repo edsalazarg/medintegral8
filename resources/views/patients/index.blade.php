@@ -9,6 +9,6 @@
     @forelse($patients as $key => $patient)
         @include('patients.partials.patient')
     @empty
-        <div>No posts found</div>
+        <div>No patients found</div>
     @endforelse
 @endsection

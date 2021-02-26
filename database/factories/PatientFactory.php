@@ -28,6 +28,7 @@ class PatientFactory extends Factory
         return [
             'firstName' => $this->faker->firstName(),
             'lastName' => $this->faker->lastName,
+            'email' => $this->faker->email,
             'department' => $this->faker->company,
             'age' => $this->faker->randomNumber(2),
             'position' => $this->faker->jobTitle,

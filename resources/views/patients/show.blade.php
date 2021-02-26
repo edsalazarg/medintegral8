@@ -5,6 +5,7 @@
 @section('content')
 
     <h1>{{ $patient['firstName'] }} {{ $patient['lastName'] }}</h1>
+    <p>Email: {{ $patient['email'] }}</p>
     <p>Telephone: {{ $patient['telephone'] }}</p>
     <p>Age: {{ $patient['age'] }}</p>
     <p>Department: {{ $patient['department'] }}</p>
