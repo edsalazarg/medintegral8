@@ -32,7 +32,8 @@ class PatientsController extends Controller
     public function show($id)
     {
 
-        return view('patients.show', ['patient' => Patient::findOrFail($id)]);
+        return view('patients.show', ['patient' =>
+            Patient::with('appointment','medrecord')->findOrFail($id)]);
     }
 
     public function edit($id)
