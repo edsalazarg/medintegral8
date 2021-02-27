@@ -9,7 +9,9 @@ class Surgeries extends Model
 {
     use HasFactory;
 
-    public function medrecord()
+    protected $guarded = [];
+
+    public function med_record()
     {
         return $this->belongsTo('App\Models\MedRecord');
     }

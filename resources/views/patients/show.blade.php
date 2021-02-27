@@ -5,6 +5,15 @@
 @section('content')
 
     <h1>{{ $patient['firstName'] }} {{ $patient['lastName'] }}</h1>
+
+    <a href="{{route('patients.edit', ['patient' => $patient->id])}}">Edit</a>
+
+    <form action="{{route('patients.destroy', ['patient' => $patient->id])}}" method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="DELETE">
+    </form>
+
     <p>Email: {{ $patient['email'] }}</p>
     <p>Telephone: {{ $patient['telephone'] }}</p>
     <p>Age: {{ $patient['age'] }}</p>
@@ -38,6 +47,7 @@
 
     <h2> Allergies </h2>
     @forelse($patient->medrecord->allergies as $allergy)
+        <hr>
         <p>Allergy: {{$allergy->allergy}}</p>
     @empty
         <p>No Allergies for Patient!</p>

@@ -45,7 +45,9 @@ class PatientFactory extends Factory
         })->afterCreating(function (Patient $patient) {
             $patient->medrecord()->save(MedRecord::factory()->make());
             $patient->medrecord->surgeries()->save(Surgeries::factory()->make());
-            $patient->medrecord->surgeries()->save(Allergies::factory()->make());
+            $patient->medrecord->allergies()->save(Allergies::factory()->make());
+            $patient->medrecord->surgeries()->save(Surgeries::factory()->make());
+            $patient->medrecord->allergies()->save(Allergies::factory()->make());
             $patient->appointment()->save(Appointment::factory()->make());
         });
     }

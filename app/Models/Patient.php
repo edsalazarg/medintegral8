@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    protected $fillable = ['firstName', 'lastName', 'department', 'age', 'position',
-        'telephone', 'emergency_contact', 'site', 'email'];
+    protected $guarded = [];
+
     use HasFactory;
 
     public function medrecord()

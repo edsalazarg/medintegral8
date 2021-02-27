@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create the post')
+@section('title', 'Create the Patient')
 
 @section('content')
     <form action="{{route('patients.store')}}" method="POST">

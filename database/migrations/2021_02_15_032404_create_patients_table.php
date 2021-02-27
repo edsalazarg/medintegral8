@@ -26,8 +26,6 @@ class CreatePatientsTable extends Migration
             $table->string('telephone', 15);
             $table->string('emergency_contact', 15);
             $table->enum('site', ['CUCEI', 'PREPA#12', 'VOCA', 'POLITECNICO', 'CDU', 'EXTERIOR']);
-
-
         });
     }
 

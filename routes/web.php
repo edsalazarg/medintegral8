@@ -20,3 +20,9 @@ Route::get('/', [HomeController::class, 'home'])->name('home.index');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
 Route::resource('patients', \App\Http\Controllers\PatientsController::class);
+
+Route::resource('surgeries',
+    \App\Http\Controllers\SurgeriesController::class, ['only' => ['create','store']]);
+
+Route::resource('allergies',
+    \App\Http\Controllers\AllergiesController::class, ['only' => ['create','store']]);
