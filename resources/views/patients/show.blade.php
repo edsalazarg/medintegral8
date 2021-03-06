@@ -19,7 +19,6 @@
     <p>Age: {{ $patient['age'] }}</p>
     <p>Department: {{ $patient['department'] }}</p>
     <p>Position: {{ $patient['position'] }}</p>
-    <p>Telephone: {{ $patient['telephone'] }}</p>
     <p>Emergency Contact: {{ $patient['emergency_contact'] }}</p>
     <p>Site: {{ $patient['site'] }}</p>
     <p>Added {{$patient->created_at->diffForHumans()}}</p>
@@ -34,24 +33,24 @@
         <p>Hypertension: {{$patient->medrecord->hypertension ? "Yes" : "No"}}</p>
         <p>Epilepsy: {{$patient->medrecord->epilepsy ? "Yes" : "No"}}</p>
         <p>Asthma: {{$patient->medrecord->asthma ? "Yes" : "No"}}</p>
+
+        <h2> Surgeries </h2>
+        @forelse($patient->medrecord->surgeries as $surgery)
+            <hr>
+            <p>Date: {{$surgery->date}}</p>
+            <p>Surgery: {{$surgery->surgery}}</p>
+        @empty
+            <p>No Surgeries for Patient!</p>
+        @endforelse
+
+        <h2> Allergies </h2>
+        @forelse($patient->medrecord->allergies as $allergy)
+            <hr>
+            <p>Allergy: {{$allergy->allergy}}</p>
+        @empty
+            <p>No Allergies for Patient!</p>
+        @endforelse
     @endif
-
-    <h2> Surgeries </h2>
-    @forelse($patient->medrecord->surgeries as $surgery)
-        <hr>
-        <p>Date: {{$surgery->date}}</p>
-        <p>Surgery: {{$surgery->surgery}}</p>
-    @empty
-        <p>No Surgeries for Patient!</p>
-    @endforelse
-
-    <h2> Allergies </h2>
-    @forelse($patient->medrecord->allergies as $allergy)
-        <hr>
-        <p>Allergy: {{$allergy->allergy}}</p>
-    @empty
-        <p>No Allergies for Patient!</p>
-    @endforelse
 
     <h1> Appointments </h1>
 

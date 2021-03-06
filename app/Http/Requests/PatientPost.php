@@ -29,6 +29,7 @@ class PatientPost extends FormRequest
             'firstName' => 'required',
             'lastName' => 'required',
             'department' => 'required',
+            'email' => 'required',
             'age' => 'required',
             'position' => 'required',
             'telephone' => 'required',
