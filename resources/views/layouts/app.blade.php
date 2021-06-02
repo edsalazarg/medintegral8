@@ -28,7 +28,35 @@
 </head>
 <body id="kt_body" class="header-mobile-fixed subheader-enabled aside-enabled aside-fixed aside-secondary-enabled aside-minimize">
 
+<!--Jairo start-->
 <!--begin::Main-->
+<div style="margin: auto; width: 70%" class="">
+    <a href="{{route('home.index')}}">Home</a>
+    <a href="{{route('home.contact')}}">Contact</a>
+    <a href="{{route('patients.index')}}">Patients</a>
+    <span style="float: right">
+        @guest
+            <a href="{{route('auth.login')}}">Login</a>
+            <a style="padding: 20px" href="{{route('auth.register')}}">Register</a>
+        @endguest
+        @auth
+            <form style="display: inline-block" action="{{ route('auth.logout') }}" method="post">
+              @csrf
+              <button>Logout</button>
+          </form>
+        @endauth
+      </span>
+    <div class="container ">
+        @if(session('status'))
+            <div style="background-color: red">
+                {{session('status')}}
+            </div>
+        @endif
+        @yield('content')
+    </div>
+</div>
+<!--Jairo end-->
+
 <!--begin::Header Mobile-->
 <div id="kt_header_mobile" class="header-mobile">
     <!--begin::Logo-->
