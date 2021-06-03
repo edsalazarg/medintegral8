@@ -12,6 +12,7 @@
       <a href="{{route('home.index')}}">Home</a>
       <a href="{{route('home.contact')}}">Contact</a>
       <a href="{{route('patients.index')}}">Patients</a>
+      <a href="{{route('users.index')}}">Users</a>
       <span style="float: right">
         @guest
           <a href="{{route('auth.login')}}">Login</a>
