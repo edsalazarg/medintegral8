@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +32,7 @@ Route::resource('allergies',
     \App\Http\Controllers\AllergiesController::class, ['only' => ['create','store']]);
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -40,3 +41,4 @@ Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('auth.logout');
+

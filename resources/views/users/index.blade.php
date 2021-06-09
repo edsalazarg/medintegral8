@@ -7,11 +7,18 @@
     <h3>Registered users</h3>
 
     @if ($users->count())
-        <ul>
         @foreach ($users as $user)
-          <li>{{$user->name}}</li>  
+          <div>
+              <span>{{$user->name}}</span>
+
+              <form class="" action="{{route('users.destroy', $user)}}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit">Delete</button>
+              </form>
+
+          </div>
         @endforeach
-        </ul>
     @else
         <p>Lista vacia</p>
     @endif
