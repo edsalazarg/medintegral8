@@ -16,6 +16,11 @@ class Patient extends Model
         return $this->hasOne('App\Models\MedRecord');
     }
 
+    public function psychquestionnaires()
+    {
+        return $this->hasOne('App\Models\PsychQuestionnaire');
+    }
+
     public function appointment()
     {
         return $this->hasMany('App\Models\Appointment');
