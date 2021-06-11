@@ -6,6 +6,7 @@ use App\Models\Allergies;
 use App\Models\Appointment;
 use App\Models\MedRecord;
 use App\Models\Patient;
+use App\Models\PsychQuestionnaire;
 use App\Models\Surgeries;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -49,6 +50,7 @@ class PatientFactory extends Factory
             $patient->medrecord->surgeries()->save(Surgeries::factory()->make());
             $patient->medrecord->allergies()->save(Allergies::factory()->make());
             $patient->appointment()->save(Appointment::factory()->make());
+            $patient->psychquestionnaires()->save(PsychQuestionnaire::factory()->make());
         });
     }
 }

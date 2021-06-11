@@ -21,6 +21,7 @@ class CreatePatientsTable extends Migration
             $table->string('lastName', 100);
             $table->string('email',50);
             $table->string('department', 50);
+            $table->enum('gender', ['FEMALE', 'MALE', 'OTHER']);
             $table->unsignedTinyInteger('age');
             $table->string('position', 50);
             $table->string('telephone', 15);
