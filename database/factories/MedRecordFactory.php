@@ -29,6 +29,7 @@ class MedRecordFactory extends Factory
             'hypertension' => $this->faker->randomElement([0,1]),
             'epilepsy' => $this->faker->randomElement([0,1]),
             'asthma' => $this->faker->randomElement([0,1]),
+            'pregnancies' => $this->faker->numberBetween(0, 4),
         ];
     }
 

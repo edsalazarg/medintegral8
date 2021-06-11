@@ -30,7 +30,7 @@ class AppointmentFactory extends Factory
             'rheumatoid_factor' => $this->faker->randomNumber(2),
             'temperature' => $this->faker->randomNumber(2),
             'sat_o2' => $this->faker->randomNumber(2),
-            'glucose' => $this->faker->randomNumber(2),
+            'glucose' => $this->faker->numberBetween(0,200),
             'glasgow' => $this->faker->randomNumber(2),
             'neurologic' => $this->faker->sentence(10),
             'head' => $this->faker->sentence(10),
@@ -42,6 +42,11 @@ class AppointmentFactory extends Factory
             'condition' => $this->faker->sentence(10),
             'treatment' => $this->faker->sentence(10),
             'forecast' => $this->faker->sentence(10),
+            'insulin' => $this->faker->numberBetween(0,400),
+            'skin_thickness' => $this->faker->numberBetween(0,99),
+            'bmi' => $this->faker->randomFloat(1,0,68),
+            'dpf' => $this->faker->randomFloat(4,0,1),
+
         ];
     }
 
