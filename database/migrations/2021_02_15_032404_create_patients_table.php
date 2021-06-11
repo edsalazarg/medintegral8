@@ -27,6 +27,8 @@ class CreatePatientsTable extends Migration
             $table->string('telephone', 15);
             $table->string('emergency_contact', 15);
             $table->enum('site', ['CUCEI', 'PREPA#12', 'VOCA', 'POLITECNICO', 'CDU', 'EXTERIOR']);
+            $table->enum('diabetes_pred', ['None', '0', '1'])->default('None');
+            $table->enum('psych_pred', ['None', '0', '1'])->default('None');
         });
     }
 
