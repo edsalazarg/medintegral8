@@ -32,7 +32,9 @@ Route::resource('allergies',
     \App\Http\Controllers\AllergiesController::class, ['only' => ['create','store']]);
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
+Route::post('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+Route::post('/users/{user}/edit', [UsersController::class, 'update'])->name('users.update');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'store']);

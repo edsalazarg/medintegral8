@@ -25,6 +25,10 @@ class CreateAppointmentsTable extends Migration
             $table->integer('temperature');
             $table->integer('sat_o2');
             $table->integer('glucose');
+            $table->integer('insulin');
+            $table->integer('skin_thickness');
+            $table->float('bmi');
+            $table->float('dpf');
             $table->integer('glasgow');
             $table->string('neurologic', 200)->default('None');
             $table->string('head', 200)->default('None');

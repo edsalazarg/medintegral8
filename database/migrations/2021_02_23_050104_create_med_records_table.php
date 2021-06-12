@@ -21,6 +21,7 @@ class CreateMedRecordsTable extends Migration
             $table->boolean('hypertension');
             $table->boolean('epilepsy');
             $table->boolean('asthma');
+            $table->integer('pregnancies');
             $table->foreignId('patient_id')->unique()->constrained('patients');
         });
     }

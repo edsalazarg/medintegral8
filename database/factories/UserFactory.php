@@ -30,4 +30,10 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+    public function configure()
+    {
+        return $this->afterMaking(function (User $user) { })->afterCreating(function (User $user){
+            $user->assignRole('User');
+        });
+    }
 }

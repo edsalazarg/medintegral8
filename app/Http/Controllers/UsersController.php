@@ -21,9 +21,29 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update($id)
+    public function show($id)
     {
+        $user = User::find($id);
+        return view('users.show', [
+            'user' => $user
+        ]);
+    }
 
+    public function update(Request $request, $id)
+    {
+        //validar los datos
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|confirmed'
+        ]);
+        $user =  Patient::findOrFail($id);
+        $user->fill($request);
+        $user->save();
+
+        $request->session()->flash('status', 'The user was updated!');
+
+        return redirect()->route('users.index');
     }
 
      public function destroy(User $user)
