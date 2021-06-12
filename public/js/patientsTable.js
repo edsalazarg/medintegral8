@@ -20,9 +20,12 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'Field #4',
-                    type: 'number',
-                    width: 10,
+                    field: 'ID',
+                    width: 50,
+                },
+                {
+                    field: 'Edad',
+                    width: 50,
                 },
             ],
         });

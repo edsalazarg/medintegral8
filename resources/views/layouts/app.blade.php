@@ -31,9 +31,9 @@
 <!--Jairo start-->
 <!--begin::Main-->
 <div style="margin: auto; width: 70%" class="">
-    <a href="{{route('home.index')}}">Home</a>
-    <a href="{{route('home.contact')}}">Contact</a>
-    <a href="{{route('patients.index')}}">Patients</a>
+{{--    <a href="{{route('home.index')}}">Home</a>--}}
+{{--    <a href="{{route('home.contact')}}">Contact</a>--}}
+{{--    <a href="{{route('patients.index')}}">Patients</a>--}}
     <span style="float: right">
         @guest
             <a href="{{route('auth.login')}}">Login</a>
@@ -45,19 +45,17 @@
               <button>Logout</button>
           </form>
             <a href="#" class="btn btn-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2">
-                                    <span class="svg-icon svg-icon-lg">
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <polygon points="0 0 24 0 24 24 0 24" />
-                                                <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>
-                            <span class="d-none d-md-inline">Logout</span>
-                        </a>
+                <span class="svg-icon svg-icon-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon points="0 0 24 0 24 24 0 24" />
+                            <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+                        </g>
+                    </svg>
+                </span>
+            <span class="d-none d-md-inline">Logout</span>
+           </a>
         @endauth
       </span>
     <div class="container ">
@@ -91,38 +89,45 @@
     <!--begin::Page-->
     <div class="d-flex flex-row flex-column-fluid page">
         <!--begin::Aside-->
-        <div class="aside aside-left d-flex aside-fixed" id="kt_aside">
+        <div class="aside aside-left d-flex aside-fixed" id="kt_aside" style="width: 150px">
             <!--begin::Primary-->
-            <div class="aside-primary d-flex flex-column align-items-center flex-row-auto">
+            <div class="aside-primary d-flex flex-column align-items-center flex-row-auto " style="width: 150px">
                 <!--begin::Brand-->
-                <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-5 py-lg-12">
+                <div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-2 py-lg-12">
                     <!--begin::Logo-->
-                    <a href="/">
-                        <img alt="Logo" src={{asset("dist/assets/media/logos/logo-letter-2.png")}} class="max-h-30px" />
+                    <a href="/patients">
+                        <img alt="Logo" src={{asset("images/logo_udg.png")}} class="max-h-70px" />
                     </a>
                     <!--end::Logo-->
                 </div>
                 <!--end::Brand-->
                 <!--begin::Nav Wrapper-->
-                <div class="aside-nav d-flex flex-column align-items-center flex-column-fluid py-5 scroll scroll-pull">
+                <div>
                     <!--begin::Nav-->
                     <ul class="nav flex-column" role="tablist">
                         <!--begin::Item-->
-                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Usuarios">
-                            <a href="#" class="nav-link btn btn-icon btn-clean btn-lg" data-toggle="tab" data-target="#kt_aside_tab_1" role="tab">
-                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Communication/Contact1.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24"/>
-                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
-                                    <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 L7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z" fill="#000000" opacity="0.3"/>
-                                </g>
-                            </svg><!--end::Svg Icon--></span>
+                        <li class="nav-item mb-3" data-placement="right" data-container="body" data-boundary="window">
+                            <div class="hover-box" onclick="location.href='/users';">
+                            <a data-toggle="tab" data-target="#kt_aside_tab_1" role="tab">
+                                <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Communication/Contact1.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                                        <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 L7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z" fill="#000000" opacity="0.3"/>
+                                        </g>
+                                    </svg><!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-text" style="color:black">Usuarios</span>
                             </a>
+                            </div>
                         </li>
+                        <br>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Pacientes">
-                            <a href="#" class="nav-link btn btn-icon btn-clean btn-lg" data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
+                        <li class="nav-item mb-3" data-placement="right" data-container="body" data-boundary="window">
+                            <div class="hover-box" onclick="location.href='/patients';">
+                            <a data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Communication/Group.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <polygon points="0 0 24 0 24 24 0 24"/>
@@ -130,12 +135,16 @@
                                     <path d="M17.6011961,15.0006174 C21.0077043,15.0378534 23.7891749,16.7601418 23.9984937,20.4 C24.0069246,20.5466056 23.9984937,21 23.4559499,21 L19.6,21 C19.6,18.7490654 18.8562935,16.6718327 17.6011961,15.0006174 Z M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
                                 </g>
                             </svg><!--end::Svg Icon--></span>
+                                <span class="menu-text" style="color:black">Pacientes</span>
                             </a>
+                            </div>
                         </li>
+                        <br>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Citas">
-                            <a href="#" class="nav-link btn btn-icon btn-clean btn-lg" data-toggle="tab" data-target="#kt_aside_tab_5" role="tab">
+                        <li class="nav-item mb-3" data-placement="right" data-container="body" data-boundary="window">
+                            <div class="hover-box">
+                            <a href="#" data-toggle="tab" data-target="#kt_aside_tab_5" role="tab">
                                 <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Communication/Clipboard-list.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"/>
@@ -149,12 +158,16 @@
                                         <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
                                     </g>
                                 </svg><!--end::Svg Icon--></span>
+                                <span class="menu-text" style="color:black">Citas</span>
                             </a>
+                            </div>
                         </li>
+                        <br>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="nav-item mb-3" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Historial clinico">
-                            <a href="#" class="nav-link btn btn-icon btn-clean btn-lg" data-toggle="tab" data-target="#kt_aside_tab_5" role="tab">
+                        <li class="nav-item mb-3" data-placement="right" data-container="body" data-boundary="window">
+                            <div class="hover-box">
+                            <a href="#" data-toggle="tab" data-target="#kt_aside_tab_5" role="tab">
                                <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Devices/Diagnostics.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"/>
@@ -164,7 +177,9 @@
                                     </g>
                                 </svg>
                                </span>
+                                <span class="menu-text" style="color:black">Historial clinico</span>
                             </a>
+                            <div>
                         </li>
                         <!--end::Item-->
                     </ul>
