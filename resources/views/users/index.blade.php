@@ -16,6 +16,10 @@
                   @method('DELETE')
                   <button type="submit">Delete</button>
               </form>
+              <form class="" action="{{route('users.edit', $user)}}" method="get">
+                  @csrf
+                  <button type="submit">Edit</button>
+              </form>
 
           </div>
         @endforeach
