@@ -35,7 +35,8 @@ class PatientFactory extends Factory
             'position' => $this->faker->jobTitle,
             'telephone' => $this->faker->e164PhoneNumber,
             'emergency_contact' => $this->faker->e164PhoneNumber,
-            'site' => $this->faker->randomElement(['CUCEI', 'PREPA#12', 'VOCA', 'POLITECNICO', 'CDU', 'EXTERIOR'])
+            'site' => $this->faker->randomElement(['CUCEI', 'PREPA#12', 'VOCA', 'POLITECNICO', 'CDU', 'EXTERIOR']),
+            'gender' => $this->faker->randomElement(['FEMALE', 'MALE', 'OTHER'])
         ];
     }
 
