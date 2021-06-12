@@ -1,31 +1,52 @@
-<div>
-    <label for="firstName">Nombre</label>
-    <input id="firstName" type="text" name="firstName" value="{{ old('firstName', optional($patient ?? null)->firstName) }}">
+<div class="form-group">
+    <label>Nombre
+        <span class="text-danger">*</span>
+    </label>
+    <input id="firstName" type="text" class="form-control" placeholder="Nombre" value="{{ old('firstName', optional($patient ?? null)->firstName) }}"/>
 </div>
-<div>
-    <label for="lastName">Apellidos</label>
-    <input id="lastName" type="text" name="lastName" value="{{ old('lastName', optional($patient ?? null)->lastName) }}">
+
+<div class="form-group">
+    <label>Apellidos
+        <span class="text-danger">*</span>
+    </label>
+    <input id="lastName" type="text" class="form-control" placeholder="Apellidos" value="{{ old('lastName', optional($patient ?? null)->lastName) }}"/>
 </div>
-<div>
-    <label for="email">Correo</label>
-    <input id="email" type="email" name="email" value="{{ old('email', optional($patient ?? null)->email) }}">
+
+<div class="form-group">
+    <label>Correo electronico
+        <span class="text-danger">*</span>
+    </label>
+    <input id="email" type="email" class="form-control" placeholder="example@email.com" value="{{ old('email', optional($patient ?? null)->email) }}"/>
 </div>
-<div>
-    <label for="department">Departamento</label>
-    <input id="department" type="text" name="department" value="{{ old('department', optional($patient ?? null)->department) }}">
+
+<div class="form-group">
+    <label>Departamento
+        <span class="text-danger">*</span>
+    </label>
+    <input id="department" type="text" class="form-control" placeholder="Departamento" value="{{ old('department', optional($patient ?? null)->department) }}"/>
 </div>
-<div>
-    <label for="age">Edad</label>
-    <input id="age" type="number" name="age" value="{{ old('age', optional($patient ?? null)->age) }}">
+
+<div class="form-group">
+    <label>Edad
+        <span class="text-danger">*</span>
+    </label>
+    <input id="age" type="text" class="form-control" placeholder="Edad" value="{{ old('age', optional($patient ?? null)->age) }}"/>
 </div>
-<div>
-    <label for="position">Puesto</label>
-    <input id="position" type="text" name="position" value="{{ old('position', optional($patient ?? null)->position) }}">
+
+<div class="form-group">
+    <label>Puesto
+        <span class="text-danger">*</span>
+    </label>
+    <input id="position" type="text" class="form-control" placeholder="Puesto" value="{{ old('position', optional($patient ?? null)->position) }}"/>
 </div>
-<div>
-    <label for="telephone">Telefono</label>
-    <input id="telephone" type="text" name="telephone" value="{{ old('telephone', optional($patient ?? null)->telephone) }}">
+
+<div class="form-group">
+    <label>Telefono
+        <span class="text-danger">*</span>
+    </label>
+    <input id="telephone" type="text" class="form-control" placeholder="Telefono" value="{{ old('telephone', optional($patient ?? null)->telephone) }}"/>
 </div>
+
 <div>
     <label for="emergency_contact">Contacto de Emergencia</label>
     <input id="emergency_contact" type="text" name="emergency_contact" value="{{ old('emergency_contact', optional($patient ?? null)->emergency_contact) }}">
@@ -41,6 +62,13 @@
         <option value="CDU" {{ old('site') == 'CDU' ? 'selected' : '' }}>CDU</option>
     </select>
 </div>
+
+{{--Ejemplo de formato de Jairo--}}
+{{--<div>--}}
+{{--    <label for="emergency_contact">Contacto de Emergencia</label>--}}
+{{--    <input id="emergency_contact" type="text" name="emergency_contact" value="{{ old('emergency_contact', optional($patient ?? null)->emergency_contact) }}">--}}
+{{--</div>--}}
+
 @if($errors->any())
     <div>
         <ul >
