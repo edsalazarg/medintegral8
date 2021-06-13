@@ -26,7 +26,7 @@ class PsychQuestionnaireFactory extends Factory
             'family_history' => $this->faker->randomElement(["No", "Si"]),
             'treatment' => $this->faker->randomElement(["No","Si"]),
             'work_interfere' => $this->faker->randomElement(["NA","Nunca","Frecuentemente","Raramente","Algunas veces"]),
-            'no_employees' => $this->faker->randomNumber(2),
+            'no_employees' => $this->faker->randomElement(['6-25', 'More than 1000' ,'26-100', '100-500', '1-5', '500-1000']),
             'remote_work' => $this->faker->randomElement(["No","Si"]),
             'tech_company' => $this->faker->randomElement(["No","Si"]),
             'benefits' => $this->faker->randomElement(["Si","No se", "No"]),

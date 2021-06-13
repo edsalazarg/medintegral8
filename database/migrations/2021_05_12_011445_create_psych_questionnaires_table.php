@@ -20,7 +20,7 @@ class CreatePsychQuestionnairesTable extends Migration
             $table->enum('family_history', ["No", "Si"]);
             $table->enum('treatment', ["No","Si"]);
             $table->enum('work_interfere', ["NA","Nunca","Frecuentemente","Raramente","Algunas veces"]);
-            $table->unsignedInteger('no_employees');
+            $table->enum('no_employees',[['1-5', '6-25','26-100','100-500','500-1000','Mas de 1000']]);
             $table->enum('remote_work', ["No","Si"]);
             $table->enum('tech_company', ["No","Si"]);
             $table->enum('benefits', ["Si","No se", "No"]);
