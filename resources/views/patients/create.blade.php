@@ -9,15 +9,9 @@
                 <h3 class="card-label">Crear paciente</h3>
             </div>
             <div class="card-toolbar">
-
             </div>
         </div>
         <div class="card-body">
-            <!--begin: Search Form-->
-            <!--begin::Search Form-->
-            <!--end::Search Form-->
-            <!--end: Search Form-->
-            <!--begin: Datatable-->
             <form action="{{route('patients.store')}}" method="POST">
                 @csrf
                 @include('patients.partials.form')
