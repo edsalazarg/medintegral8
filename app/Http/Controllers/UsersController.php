@@ -29,7 +29,15 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function update(User $user, Request $request)
     {
         //validar los datos
         $this->validate($request, [
@@ -37,10 +45,9 @@ class UsersController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed'
         ]);
-        $user =  Patient::findOrFail($id);
-        $user->fill($request);
+        $user =  User::find($user->id);
+        $user->fill($request->all());
         $user->save();
-
         $request->session()->flash('status', 'The user was updated!');
 
         return redirect()->route('users.index');

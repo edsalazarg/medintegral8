@@ -34,7 +34,8 @@ Route::resource('allergies',
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
 Route::post('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
-Route::post('/users/{user}/edit', [UsersController::class, 'update'])->name('users.update');
+Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('users.edit');
+Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'store']);
