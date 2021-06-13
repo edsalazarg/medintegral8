@@ -11,12 +11,12 @@
           <div>
               <span>{{$user->name}}</span>
 
-              <form class="" action="{{route('users.destroy', $user)}}" method="post">
+              <form class="" action="{{route('users.destroy', $user->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button type="submit">Delete</button>
               </form>
-              <form class="" action="{{route('users.edit', $user)}}" method="get">
+              <form class="" action="{{route('users.edit', $user->id)}}" method="get">
                   @csrf
                   <button type="submit">Edit</button>
               </form>

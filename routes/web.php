@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\MedRecordController;
+use App\Http\Controllers\PatientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +25,15 @@ Route::get('/', [HomeController::class, 'home'])->name('home.index');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
-Route::resource('patients', \App\Http\Controllers\PatientsController::class);
+//Route::resource('patients', \App\Http\Controllers\PatientsController::class);
+Route::get('/patients', [PatientsController::class, 'index'])->name('patients.index');
+Route::post('/patients', [PatientsController::class, 'store'])->name('patients.store');
+Route::get('/patients/create', [PatientsController::class, 'create'])->name('patients.create');
+Route::get('/patients/{patient}', [PatientsController::class, 'show'])->name('patients.show');
+Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit'])->name('patients.edit');
+Route::post('/patients/{patient}/delete', [PatientsController::class, 'destroy'])->name('patients.destroy');
+Route::put('/patients/{patient}/edit', [PatientsController::class, 'update'])->name('patients.update');
+
 
 Route::resource('surgeries',
     \App\Http\Controllers\SurgeriesController::class, ['only' => ['create','store']]);
@@ -33,9 +43,15 @@ Route::resource('allergies',
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
-Route::post('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('users.edit');
 Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
+
+Route::get('/med_records', [MedRecordController::class, 'index'])->name('med_records.index');
+Route::get('/med_records/{med_record}', [MedRecordController::class, 'show'])->name('med_records.show');
+Route::delete('/med_records/{med_record}', [MedRecordController::class, 'destroy'])->name('med_records.destroy');
+Route::get('/med_records/{med_record}/update', [MedRecordController::class, 'edit'])->name('med_records.edit');
+Route::post('/med_records/{med_record}/update', [MedRecordController::class, 'update'])->name('med_records.update');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'store']);
