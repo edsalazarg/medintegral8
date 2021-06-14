@@ -183,34 +183,50 @@
 
         @else
         <!--begin: Datatable-->
-            <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
-                <thead>
+        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th>Notas</th>
+                <th>Diagnostíco</th>
+                <th>Condición</th>
+                <th>Tratamiento</th>
+                <th>Pronóstico</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($patient->appointment as $appointment)
                 <tr>
-                    <th>Fecha</th>
-                    <th>Lugar</th>
-                    <th>Notas</th>
-                    <th>Diagnostíco</th>
-                    <th>Condición</th>
-                    <th>Tratamiento</th>
-                    <th>Pronóstico</th>
+                    <td>{{$appointment->created_at->format('d/m/Y')}}</td>
+                    <td>{{$appointment->location}}</td>
+                    <td>{{$appointment->notes}}</td>
+                    <td>{{$appointment->diagnosis}}</td>
+                    <td>{{$appointment->condition}}</td>
+                    <td>{{$appointment->treatment}}</td>
+                    <td>{{$appointment->forecast}}</td>
                 </tr>
-                </thead>
-                <tbody>
-                @foreach($patient->appointment as $appointment)
-                    <tr>
-                        <td>{{$appointment->created_at->format('d/m/Y')}}</td>
-                        <td>{{$appointment->location}}</td>
-                        <td>{{$appointment->notes}}</td>
-                        <td>{{$appointment->diagnosis}}</td>
-                        <td>{{$appointment->condition}}</td>
-                        <td>{{$appointment->treatment}}</td>
-                        <td>{{$appointment->forecast}}</td>
-                    </tr>
-                @endforeach
-                </tbody>
+            @endforeach
+            </tbody>
+        </table>
+        @endif
 
-            </table>
-            @endif
+        <h3> Predicciones </h3>
+        @if($patient->diabetes_pred == "1")
+            <span class="label label-danger label-pill label-inline mr-2">Diabetes: Muy probable</span>
+        @elseif($patient->diabetes_pred == "0")
+            <span class="label label-primary label-inline font-weight-boldest mr-2">Diabetes: Nada probable</span>
+        @else
+            <span class="label label-dark label-inline mr-2">Diabetes: Desconocido aún</span>
+        @endif
+
+        @if($patient->psych_pred == "1")
+            <span class="label label-danger label-pill label-inline mr-2">Problemas mentales: Muy probable</span>
+        @elseif($patient->psych_pred == "0")
+            <span class="label label-primary label-inline font-weight-boldest mr-2">Problemas mentales: Nada probable</span>
+        @else
+            <span class="label label-dark label-inline mr-2">Problemas mentales: Desconocido aún</span>
+        @endif
     </div>
 </div>
 @endsection
