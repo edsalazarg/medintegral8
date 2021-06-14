@@ -221,11 +221,11 @@
         @endif
 
         @if($patient->psych_pred == "1")
-            <span class="label label-danger label-pill label-inline mr-2">Problemas mentales: Muy probable</span>
+            <span class="label label-danger label-pill label-inline mr-2">Tratamiento psicológico: Muy probable</span>
         @elseif($patient->psych_pred == "0")
-            <span class="label label-primary label-inline font-weight-boldest mr-2">Problemas mentales: Nada probable</span>
+            <span class="label label-primary label-inline font-weight-boldest mr-2">Tratamiento psicológico: Nada probable</span>
         @else
-            <span class="label label-dark label-inline mr-2">Problemas mentales: Desconocido aún</span>
+            <span class="label label-dark label-inline mr-2">Tratamiento psicológico: Desconocido aún</span>
         @endif
     </div>
 </div>
