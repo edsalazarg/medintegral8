@@ -54,10 +54,6 @@ License: You must have a valid license purchased only from themeforest(the above
                         <!--begin::Title-->
                         <div class="pb-5 pb-lg-15">
                             <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Iniciar sesion</h3>
-                            <div class="text-muted font-weight-bold font-size-h4">No tienes una cuenta?
-                                <a href="{{asset("custom/pages/login/login-4/signup.html")}}" class="text-primary font-weight-bolder">Crear cuenta
-                                </a>
-                            </div>
                         </div>
                         <!--begin::Title-->
                         <!--begin::Form group-->

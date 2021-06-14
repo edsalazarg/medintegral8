@@ -20,8 +20,8 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'ID',
-                    width: 50,
+                    field: 'Lugar',
+                    width: 70,
                 },
             ],
         });
