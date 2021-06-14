@@ -29,18 +29,72 @@
         </div>
     </div>
     <div class="card-body">
-            @include('patients.partials.form')
+        <div class="form-group">
+            <label>Nombre
+                <span class="text-danger">*</span>
+            </label>
+            <input id="firstName" name="firstName"  type="text" class="form-control" placeholder="Nombre" value="{{ old('firstName', optional($patient ?? null)->firstName)}}" disabled="disabled"/>
             <br>
+            <label>Apellidos
+                <span class="text-danger">*</span>
+            </label>
+            <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Apellidos" value="{{ old('lastName', optional($patient ?? null)->lastName) }}" disabled="disabled"/>
+            <br>
+            <label>Correo electronico
+                <span class="text-danger">*</span>
+            </label>
+            <input id="email" name="email" type="email" class="form-control" placeholder="example@email.com" value="{{ old('email', optional($patient ?? null)->email) }}" disabled="disabled"/>
+            <br>
+            <label>Departamento
+                <span class="text-danger">*</span>
+            </label>
+            <input id="department" name="department" type="text" class="form-control" placeholder="Departamento" value="{{ old('department', optional($patient ?? null)->department) }}" disabled="disabled"/>
+            <br>
+            <label>Edad
+                <span class="text-danger">*</span>
+            </label>
+            <input id="age" name="age" type="text" class="form-control" placeholder="Edad" value="{{ old('age', optional($patient ?? null)->age) }}" disabled="disabled"/>
+            <br>
+            <label>Puesto
+                <span class="text-danger">*</span>
+            </label>
+            <input id="position" name="position" type="text" class="form-control" placeholder="Puesto" value="{{ old('position', optional($patient ?? null)->position) }}" disabled="disabled"/>
+            <br>
+            <label>Telefono
+                <span class="text-danger">*</span>
+            </label>
+            <input id="telephone" name="telephone" type="text" class="form-control" placeholder="Telefono" value="{{ old('telephone', optional($patient ?? null)->telephone) }}" disabled="disabled"/>
+            <br>
+            <label>Contacto de Emergencia
+                <span class="text-danger">*</span>
+            </label>
+            <input id="emergency_contact" name="emergency_contact" type="text" class="form-control" placeholder="Contacto de emergencia" value="{{ old('emergency_contact', optional($patient ?? null)->emergency_contact) }}" disabled="disabled"/>
+            <br>
+            <label for="site">Institucion</label>
+            <select id="site" name="site" class="form-control form-control-lg form-control-solid" disabled="disabled">
+                <option value="CUCEI" {{ old('site') == 'CUCEI' ? 'selected' : '' }}>CUCEI</option>
+                <option value="PREPA#12" {{ old('site') == 'PREPA#12' ? 'selected' : '' }}>PREPA#12</option>
+                <option value="VOCA" {{ old('site') == 'VOCA' ? 'selected' : '' }} >VOCA</option>
+                <option value="POLITECNICO" {{ old('site') == 'POLITECNICO' ? 'selected' : '' }}>POLITECNICO</option>
+                <option value="EXTERIOR" {{ old('site') == 'EXTERIOR' ? 'selected' : '' }}>EXTERIOR</option>
+                <option value="CDU" {{ old('site') == 'CDU' ? 'selected' : '' }}>CDU</option>
+            </select>
+        </div>
+
+        @if($errors->any())
+            <div>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <h3 class="card-label">Historial clinico</h3>
         @if(empty($patient->medrecord))
             <p>El paciente aun no tiene historial clinico</p>
-            <br>
         @else
-            <br>
-            <div>
-                <span class="label label-xl label-info label-inline mr-2">Grupo sanguineo: {{$patient->medrecord->blood_group}}</span>
-            </div>
-            <br>
+                <span class="label label-md label-info label-inline mr-2">Grupo sanguineo: {{$patient->medrecord->blood_group}}</span>
 
             @if($patient->medrecord->diabetes == 1)
                 <span class="label label-danger label-pill label-inline mr-2">Diabetes: Si</span>
@@ -65,52 +119,98 @@
             @else
                 <span class="label label-primary label-inline font-weight-boldest mr-2">Asma: No</span>
             @endif
-            <br>
-            <br>
-            <br>
-            <h3> Cirugías </h3>
-            @forelse($patient->medrecord->surgeries as $surgery)
-                <p>Fecha: {{$surgery->date}}</p>
-                <p>Cirugía: {{$surgery->surgery}}</p>
-            @empty
-                <p>El paciente no tiene cirugias</p>
-            @endforelse
-            <br>
-            <h3> Alergias </h3>
-            @forelse($patient->medrecord->allergies as $allergy)
-                <p>Alergia: {{$allergy->allergy}}</p>
-            @empty
-                <p>El paciente no tiene alergias</p>
-            @endforelse
+            <br><br>
+        @endif
+        <br>
+        <h3> Cirugías </h3>
+        @if(empty($patient->medrecord->surgeries))
+            <p>El paciente aun no tiene cirugías</p>
+        @else
+        <!--begin: Datatable-->
+        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+            <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Cirugía</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($patient->medrecord->surgeries as $surgery)
+                <tr>
+                    <td>{{$surgery->date}}</td>
+                    <td>{{$surgery->surgery}}</td>
+                </tr>
+            @endforeach
+            <tr>
+
+            </tr>
+            </tbody>
+        </table>
+        <!--end: Datatable-->
+        @endif
+
+        <br>
+        <h3> Alergias </h3>
+        @if(empty($patient->medrecord->allergies))
+            <p>El paciente aun no tiene cirugías</p>
+        @else
+        <!--begin: Datatable-->
+        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+            <thead>
+            <tr>
+                <th>Alergia</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($patient->medrecord->allergies as $allergy)
+                <tr>
+                    <td>{{$allergy->allergy}}</td>
+                </tr>
+            @endforeach
+            <tr>
+
+            </tr>
+            </tbody>
+
+        </table>
+        <!--end: Datatable-->
         @endif
 
         <br>
         <h3> Citas </h3>
-        @forelse($patient->appointment as $appointment)
-            <p>Fecha: {{$appointment->created_at->format('d/m/Y')}}</p>
-            <p>Lugar: {{$appointment->location}}</p>
-            <p>Transferencia: {{$appointment->transfer}}</p>
-            <p>Notas: {{$appointment->notes}}</p>
-            <p>Presión sanguinea: {{$appointment->blood_pressure}}</p>
-            <p>Ritmo cardiaco: {{$appointment->heart_rate}}</p>
-            <p>Factor reumatoide: {{$appointment->rheumatoid_factor}}</p>
-            <p>Temperatura: {{$appointment->temperature}}</p>
-            <p>Saturación de oxígeno: {{$appointment->sat_o2}}</p>
-            <p>Glucosa: {{$appointment->glucose}}</p>
-            <p>Glasgow: {{$appointment->glasgow}}</p>
-            <p>Neurológico: {{$appointment->neurologic}}</p>
-            <p>Cabeza: {{$appointment->head}}</p>
-            <p>Cuello: {{$appointment->neck}}</p>
-            <p>Cardiopulmonar: {{$appointment->cardiopulmonary}}</p>
-            <p>Abdomen: {{$appointment->abdomen}}</p>
-            <p>Extremidades: {{$appointment->extremities}}</p>
-            <p>Diagnóstico: {{$appointment->diagnosis}}</p>
-            <p>Condición: {{$appointment->condition}}</p>
-            <p>Tratamiento: {{$appointment->treatment}}</p>
-            <p>Pronóstico: {{$appointment->forecast}}</p>
-        @empty
+        @if(empty($patient->appointment))
             <p>El paciente no tiene citas</p>
-        @endforelse
+
+        @else
+        <!--begin: Datatable-->
+            <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+                <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Notas</th>
+                    <th>Diagnostíco</th>
+                    <th>Condición</th>
+                    <th>Tratamiento</th>
+                    <th>Pronóstico</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($patient->appointment as $appointment)
+                    <tr>
+                        <td>{{$appointment->created_at->format('d/m/Y')}}</td>
+                        <td>{{$appointment->location}}</td>
+                        <td>{{$appointment->notes}}</td>
+                        <td>{{$appointment->diagnosis}}</td>
+                        <td>{{$appointment->condition}}</td>
+                        <td>{{$appointment->treatment}}</td>
+                        <td>{{$appointment->forecast}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+
+            </table>
+            @endif
     </div>
 </div>
 @endsection
