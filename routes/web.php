@@ -36,12 +36,12 @@ Route::put('/patients/{patient}/edit', [PatientsController::class, 'update'])->n
 Route::post('/patients/{patient}/delete', [PatientsController::class, 'destroy'])->name('patients.destroy');
 
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
-Route::post('/appointments', [AppointmentController::class, 'store'])->name('patients.store');
-Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('patients.create');
-Route::get('/appointments/{appointment}', [AppointmentController::class, 'show'])->name('patients.show');
-Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('patients.edit');
-Route::put('/appointments/{appointment}/edit', [AppointmentController::class, 'update'])->name('patients.update');
-Route::post('/appointments/{appointment}/delete', [AppointmentController::class, 'destroy'])->name('patients.destroy');
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
+Route::get('/appointments/{appointment}', [AppointmentController::class, 'show'])->name('appointments.show');
+Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
+Route::put('/appointments/{appointment}/edit', [AppointmentController::class, 'update'])->name('appointments.update');
+Route::post('/appointments/{appointment}/delete', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
 
 Route::resource('surgeries',
     \App\Http\Controllers\SurgeriesController::class, ['only' => ['create','store']]);
