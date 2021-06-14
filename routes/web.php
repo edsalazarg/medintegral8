@@ -10,6 +10,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MedRecordController;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\QuestionnaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::get('/appointments/{appointment}', [AppointmentController::class, 'show']
 Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('appointments.edit');
 Route::put('/appointments/{appointment}/edit', [AppointmentController::class, 'update'])->name('appointments.update');
 Route::post('/appointments/{appointment}/delete', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+Route::get('/questionnaire', [QuestionnaireController::class, 'index'])->name('questionnaire.index');
+Route::post('/questionnaire', [QuestionnaireController::class, 'store'])->name('questionnaire.store');
+Route::get('/questionnaire/create', [QuestionnaireController::class, 'create'])->name('questionnaire.create');
 
 Route::resource('surgeries',
     \App\Http\Controllers\SurgeriesController::class, ['only' => ['create','store']]);
