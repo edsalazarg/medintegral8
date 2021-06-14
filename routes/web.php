@@ -70,3 +70,4 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('auth.logout');
 
+
