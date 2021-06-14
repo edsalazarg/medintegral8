@@ -8,6 +8,10 @@ use App\Models\Patient;
 
 class AppointmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
     public function index()
     {
         $appointments = Appointment::all();
