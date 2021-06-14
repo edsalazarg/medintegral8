@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MedRecordController;
 use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,13 @@ Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit'])->nam
 Route::put('/patients/{patient}/edit', [PatientsController::class, 'update'])->name('patients.update');
 Route::post('/patients/{patient}/delete', [PatientsController::class, 'destroy'])->name('patients.destroy');
 
+Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('patients.store');
+Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('patients.create');
+Route::get('/appointments/{appointment}', [AppointmentController::class, 'show'])->name('patients.show');
+Route::get('/appointments/{appointment}/edit', [AppointmentController::class, 'edit'])->name('patients.edit');
+Route::put('/appointments/{appointment}/edit', [AppointmentController::class, 'update'])->name('patients.update');
+Route::post('/appointments/{appointment}/delete', [AppointmentController::class, 'destroy'])->name('patients.destroy');
 
 Route::resource('surgeries',
     \App\Http\Controllers\SurgeriesController::class, ['only' => ['create','store']]);
@@ -48,7 +56,7 @@ Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('user
 Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
 
 Route::get('/med_records', [MedRecordController::class, 'index'])->name('med_records.index');
-Route::post('/med_records', [MedRecordController::class, 'create'])->name('med_records.create');
+Route::get('/med_records/create', [MedRecordController::class, 'create'])->name('med_records.create');
 Route::get('/med_records/{med_record}', [MedRecordController::class, 'show'])->name('med_records.show');
 Route::delete('/med_records/{med_record}', [MedRecordController::class, 'destroy'])->name('med_records.destroy');
 Route::get('/med_records/{med_record}/edit', [MedRecordController::class, 'edit'])->name('med_records.edit');
