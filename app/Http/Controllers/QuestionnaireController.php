@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class QuestionnaireController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
     public function index()
     {
         $questionnaires = PsychQuestionnaire::all();
