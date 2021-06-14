@@ -7,7 +7,7 @@ var KTDatatableHtmlTableDemo = function() {
     // demo initializer
     var demo = function() {
 
-        var datatable = $('#kt_datatable_patients').KTDatatable({
+        var datatable = $('#kt_datatable_users').KTDatatable({
             data: {
                 saveState: {cookie: false},
             },
@@ -20,24 +20,8 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'Edad',
-                    width: 40,
-                },
-                {
-                    field: 'Ocupación',
-                    width: 90,
-                },
-                {
-                    field: 'Telefono',
-                    width: 115,
-                },
-                {
-                    field: 'Contacto de emergencia',
-                    width: 115,
-                },
-                {
-                    field: 'Site',
-                    width: 85,
+                    field: 'ID',
+                    width: 50,
                 },
             ],
         });
