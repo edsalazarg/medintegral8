@@ -12,6 +12,11 @@ class MedRecordController extends Controller
         $this->middleware(['auth']);
     }
 
+    public function create(Request $request)
+    {
+        dd($request);
+    }
+
     public function index()
     {
         $med_records = MedRecord::get();

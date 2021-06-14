@@ -31,8 +31,8 @@ Route::post('/patients', [PatientsController::class, 'store'])->name('patients.s
 Route::get('/patients/create', [PatientsController::class, 'create'])->name('patients.create');
 Route::get('/patients/{patient}', [PatientsController::class, 'show'])->name('patients.show');
 Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit'])->name('patients.edit');
-Route::post('/patients/{patient}/delete', [PatientsController::class, 'destroy'])->name('patients.destroy');
 Route::put('/patients/{patient}/edit', [PatientsController::class, 'update'])->name('patients.update');
+Route::post('/patients/{patient}/delete', [PatientsController::class, 'destroy'])->name('patients.destroy');
 
 
 Route::resource('surgeries',
@@ -48,10 +48,11 @@ Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('user
 Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
 
 Route::get('/med_records', [MedRecordController::class, 'index'])->name('med_records.index');
+Route::post('/med_records', [MedRecordController::class, 'create'])->name('med_records.create');
 Route::get('/med_records/{med_record}', [MedRecordController::class, 'show'])->name('med_records.show');
 Route::delete('/med_records/{med_record}', [MedRecordController::class, 'destroy'])->name('med_records.destroy');
-Route::get('/med_records/{med_record}/update', [MedRecordController::class, 'edit'])->name('med_records.edit');
-Route::post('/med_records/{med_record}/update', [MedRecordController::class, 'update'])->name('med_records.update');
+Route::get('/med_records/{med_record}/edit', [MedRecordController::class, 'edit'])->name('med_records.edit');
+Route::put('/med_records/{med_record}/edit', [MedRecordController::class, 'update'])->name('med_records.update');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'store']);
