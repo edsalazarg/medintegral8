@@ -120,7 +120,7 @@
                                 </svg><!--end::Svg Icon-->
                             </span>
                             </a>
-                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Eliminar paciente">
+                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Eliminar paciente" data-toggle="modal" data-target="#exampleModal">
                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Home/Trash.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -131,6 +131,30 @@
                                 </svg><!--end::Svg Icon-->
                             </span>
                             </a>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Eliminar paciente</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Estas seguro que quieres eliminar al paciente?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>
+                                                    <form action="{{route('patients.destroy', ['patient' => $patient->id])}}" method="POST">
+                                                        @csrf
+{{--                                                        @method('DELETE')--}}
+                                                        <input type="submit" class="btn btn-primary font-weight-bold" value="Eliminar">
+                                                    </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </td>
                     </tr>
