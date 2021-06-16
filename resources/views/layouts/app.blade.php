@@ -81,6 +81,7 @@
                 <div>
                     <!--begin::Nav-->
                     <ul class="nav flex-column" role="tablist">
+                        @can('access.users')
                         <!--begin::Item-->
                         <li class="nav-item mb-3" data-placement="right" data-container="body" data-boundary="window">
                             <div class="hover-box" onclick="location.href='/users';">
@@ -101,6 +102,7 @@
                         </li>
                         <br>
                         <!--end::Item-->
+                        @endcan
                         <!--begin::Item-->
                         <li class="nav-item mb-3" data-placement="right" data-container="body" data-boundary="window">
                             <div class="hover-box" onclick="location.href='/patients';">
