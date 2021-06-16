@@ -21,5 +21,12 @@ class adminSeeder extends Seeder
             'password' => Hash::make('medicina')
         ]);
         $admn->assignRole('Admin');
+
+        $admn = User::create([
+            'name' => 'normal',
+            'email' => 'normal@root.c',
+            'password' => Hash::make('medicina')
+        ]);
+        $admn->assignRole('User');
     }
 }
