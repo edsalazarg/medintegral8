@@ -22,7 +22,7 @@ class CreateMedRecordsTable extends Migration
             $table->boolean('epilepsy');
             $table->boolean('asthma');
             $table->integer('pregnancies');
-            $table->foreignId('patient_id')->unique()->constrained('patients');
+            $table->foreignId('patient_id')->unique()->constrained('patients')->onDelete('cascade');
         });
     }
 

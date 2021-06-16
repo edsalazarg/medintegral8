@@ -40,7 +40,7 @@ class CreateAppointmentsTable extends Migration
             $table->string('condition', 200)->default('None');
             $table->string('treatment', 200)->default('None');
             $table->string('forecast', 200)->default('None');
-            $table->foreignId('patient_id')->constrained('patients');
+            $table->foreignId('patient_id')->constrained('patients')->onDelete('cascade');
         });
     }
 

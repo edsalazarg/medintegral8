@@ -17,7 +17,7 @@ class CreateAllergiesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('allergy');
-            $table->foreignId('med_record_id')->constrained('med_records');
+            $table->foreignId('med_record_id')->constrained('med_records')->onDelete('cascade');
         });
     }
 
