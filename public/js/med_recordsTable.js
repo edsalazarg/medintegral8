@@ -20,8 +20,24 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'ID',
-                    width: 50,
+                    field: 'Grupo Sanguineo',
+                    width: 90,
+                },
+                {
+                    field: 'Diabetes',
+                    width: 70,
+                },
+                {
+                    field: 'Hipertension',
+                    width: 90,
+                },
+                {
+                    field: 'Epilepsia',
+                    width: 70,
+                },
+                {
+                    field: 'Asma',
+                    width: 70,
                 },
             ],
         });

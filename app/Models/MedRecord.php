@@ -9,6 +9,8 @@ class MedRecord extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function patient()
     {
         return $this->belongsTo('App\Models\Patient');
