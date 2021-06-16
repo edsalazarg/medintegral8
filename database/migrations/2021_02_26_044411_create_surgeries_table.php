@@ -18,7 +18,7 @@ class CreateSurgeriesTable extends Migration
             $table->timestamps();
             $table->string('surgery');
             $table->date('date');
-            $table->foreignId('med_record_id')->constrained('med_records');
+            $table->foreignId('med_record_id')->constrained('med_records')->onDelete('cascade');
         });
     }
 

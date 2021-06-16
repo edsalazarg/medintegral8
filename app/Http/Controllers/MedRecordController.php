@@ -19,7 +19,7 @@ class MedRecordController extends Controller
 
     public function index()
     {
-        $med_records = MedRecord::get();
+        $med_records = MedRecord::all();
         return view('med_records.index', [
             'med_records' => $med_records
         ]);

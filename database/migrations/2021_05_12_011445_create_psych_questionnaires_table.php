@@ -36,7 +36,7 @@ class CreatePsychQuestionnairesTable extends Migration
             $table->enum('physhealthinterview', ["Si","A lo mejor", "No"]);
             $table->enum('mentalvsphysical', ["Si","No se", "No"]);
             $table->enum('obs_consequence', ["No", "Si"]);
-            $table->foreignId('patient_id')->unique()->constrained('patients');
+            $table->foreignId('patient_id')->unique()->constrained('patients')->onDelete('cascade');
         });
     }
 
