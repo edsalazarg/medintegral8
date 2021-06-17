@@ -9,6 +9,15 @@
     </label>
     <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Apellidos" value="{{ old('lastName', optional($patient ?? null)->lastName) }}"/>
     <br>
+    <label>Sexo
+        <span class="text-danger">*</span>
+    </label>
+    <select id="gender" name="gender" class="form-control" value="{{ old('gender') }}">
+        <option value="0" selected>Female</option>
+        <option value="1">Male</option>
+        <option value="2">Other</option>
+    </select>
+    <br>
     <label>Correo electronico
         <span class="text-danger">*</span>
     </label>
