@@ -80,18 +80,42 @@
                         <td>
                             {{$med_record->blood_group}}
                         </td>
-                        <td>
-                            {{$med_record->diabetes}}
-                        </td>
-                        <td>
-                            {{$med_record->hypertension}}
-                        </td>
-                        <td>
-                            {{$med_record->epilepsy}}
-                        </td>
-                        <td>
-                            {{$med_record->asthma}}
-                        </td>
+                        @if($med_record->diabetes == '1')
+                            <td>
+                                <span class="label label-danger label-inline">Si</span>
+                            </td>
+                        @else
+                            <td>
+                                <span class="label label-primary label-inline">No</span>
+                            </td>
+                        @endif
+                        @if($med_record->hypertension == '1')
+                            <td>
+                                <span class="label label-danger label-inline">Si</span>
+                            </td>
+                        @else
+                            <td>
+                                <span class="label label-primary label-inline">No</span>
+                            </td>
+                        @endif
+                        @if($med_record->epilepsy == '1')
+                            <td>
+                                <span class="label label-danger label-inline">Si</span>
+                            </td>
+                        @else
+                            <td>
+                                <span class="label label-primary label-inline">No</span>
+                            </td>
+                        @endif
+                        @if($med_record->asthma == '1')
+                            <td>
+                                <span class="label label-danger label-inline">Si</span>
+                            </td>
+                        @else
+                            <td>
+                                <span class="label label-primary label-inline">No</span>
+                            </td>
+                        @endif
                         <td>
                             <div>
                                 <a href="/patients/{{$med_record->patient->id}}" class="btn btn-sm btn-clean btn-icon mr-2" title="Ver Historial Medico">
