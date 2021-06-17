@@ -1,62 +1,92 @@
 <div class="form-group">
-    <label>Nombre
+    @isset($patients)
+        <label>Paciente
+            <span class="text-danger">*</span>
+        </label>
+        <select id="patient_id" name="patient_id" class="form-control">
+            @foreach($patients as $patient)
+            <option value="{{$patient->id}}">{{$patient->firstName." ".$patient->lastName}}</option>
+            @endforeach
+        </select>
+    @endisset
+    <label>Tipo de Sangre
         <span class="text-danger">*</span>
     </label>
-    <input id="firstName" name="firstName"  type="text" class="form-control" placeholder="Nombre" value="{{ old('firstName', optional($patient ?? null)->firstName) }}"/>
+    <input id="blood_group" name="blood_group"  type="text" class="form-control" placeholder="Tipo de Sangre" value="{{ old('firstName', optional($med_record ?? null)->blood_group) }}"/>
     <br>
-    <label>Apellidos
+    <label>Diabetes
         <span class="text-danger">*</span>
     </label>
-    <input id="lastName" name="lastName" type="text" class="form-control" placeholder="Apellidos" value="{{ old('lastName', optional($patient ?? null)->lastName) }}"/>
-    <br>
-    <label>Sexo
-        <span class="text-danger">*</span>
-    </label>
-    <select id="gender" name="gender" class="form-control" value="{{ old('gender') }}">
-        <option value="0" selected>Female</option>
-        <option value="1">Male</option>
-        <option value="2">Other</option>
+    <select id="diabetes" name="diabetes" class="form-control">
+        @isset($med_record)
+            @if($med_record->diabetes == '0')
+                <option value="0" selected>No</option>
+                <option value="1">Si</option>
+            @elseif($med_record->diabetes == '1')
+                <option value="0">No</option>
+                <option value="1" selected>Si</option>
+
+            @endif
+        @else
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        @endisset
     </select>
-    <br>
-    <label>Correo electronico
+    <label>Hipertension
         <span class="text-danger">*</span>
     </label>
-    <input id="email" name="email" type="email" class="form-control" placeholder="example@email.com" value="{{ old('email', optional($patient ?? null)->email) }}"/>
-    <br>
-    <label>Departamento
-        <span class="text-danger">*</span>
-    </label>
-    <input id="department" name="department" type="text" class="form-control" placeholder="Departamento" value="{{ old('department', optional($patient ?? null)->department) }}"/>
-    <br>
-    <label>Edad
-        <span class="text-danger">*</span>
-    </label>
-    <input id="age" name="age" type="text" class="form-control" placeholder="Edad" value="{{ old('age', optional($patient ?? null)->age) }}"/>
-    <br>
-    <label>Puesto
-        <span class="text-danger">*</span>
-    </label>
-    <input id="position" name="position" type="text" class="form-control" placeholder="Puesto" value="{{ old('position', optional($patient ?? null)->position) }}"/>
-    <br>
-    <label>Telefono
-        <span class="text-danger">*</span>
-    </label>
-    <input id="telephone" name="telephone" type="text" class="form-control" placeholder="Telefono" value="{{ old('telephone', optional($patient ?? null)->telephone) }}"/>
-    <br>
-    <label>Contacto de Emergencia
-        <span class="text-danger">*</span>
-    </label>
-    <input id="emergency_contact" name="emergency_contact" type="text" class="form-control" placeholder="Contacto de emergencia" value="{{ old('emergency_contact', optional($patient ?? null)->emergency_contact) }}"/>
-    <br>
-    <label for="site">Institucion</label>
-    <select id="site" name="site" class="form-control form-control-lg form-control-solid">
-        <option value="CUCEI" {{ old('site') == 'CUCEI' ? 'selected' : '' }}>CUCEI</option>
-        <option value="PREPA#12" {{ old('site') == 'PREPA#12' ? 'selected' : '' }}>PREPA#12</option>
-        <option value="VOCA" {{ old('site') == 'VOCA' ? 'selected' : '' }} >VOCA</option>
-        <option value="POLITECNICO" {{ old('site') == 'POLITECNICO' ? 'selected' : '' }}>POLITECNICO</option>
-        <option value="EXTERIOR" {{ old('site') == 'EXTERIOR' ? 'selected' : '' }}>EXTERIOR</option>
-        <option value="CDU" {{ old('site') == 'CDU' ? 'selected' : '' }}>CDU</option>
+    <select id="hypertension" name="hypertension" class="form-control">
+        @isset($med_record)
+            @if($med_record->hypertension == '0')
+                <option value="0" selected>No</option>
+                <option value="1">Si</option>
+            @elseif($med_record->hypertension == '1')
+                <option value="0">No</option>
+                <option value="1" selected>Si</option>
+            @endif
+        @else
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        @endisset
     </select>
+    <label>Epilepsia
+        <span class="text-danger">*</span>
+    </label>
+    <select id="epilepsy" name="epilepsy" class="form-control">
+        @isset($med_record)
+            @if($med_record->epilepsy == '0')
+                <option value="0" selected>No</option>
+                <option value="1">Si</option>
+            @elseif($med_record->epilepsy == '1')
+                <option value="0">No</option>
+                <option value="1" selected>Si</option>
+            @endif
+        @else
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        @endisset
+    </select>
+    <label>Asma
+        <span class="text-danger">*</span>
+    </label>
+    <select id="asthma" name="asthma" class="form-control">
+        @isset($med_record)
+            @if($med_record->asthma == '0')
+                <option value="0" selected>No</option>
+                <option value="1">Si</option>
+            @elseif($med_record->asthma == '1')
+                <option value="0">No</option>
+                <option value="1" selected>Si</option>
+            @endif
+        @else
+            <option value="0">No</option>
+            <option value="1">Si</option>
+        @endisset
+    </select>
+    <label>Pregnancies
+        <span class="text-danger">*</span>
+    </label>
+    <input id="pregnancies" name="pregnancies"  type="number" class="form-control" placeholder="Embarazos" value="{{ old('pregnancies', optional($med_record ?? null)->pregnancies) }}"/>
 </div>
 
 @if($errors->any())

@@ -62,6 +62,7 @@ Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('u
 
 Route::get('/med_records', [MedRecordController::class, 'index'])->name('med_records.index');
 Route::get('/med_records/create', [MedRecordController::class, 'create'])->name('med_records.create');
+Route::post('/med_records', [MedRecordController::class, 'store'])->name('med_records.store');
 Route::get('/med_records/{med_record}', [MedRecordController::class, 'show'])->name('med_records.show');
 Route::delete('/med_records/{med_record}', [MedRecordController::class, 'destroy'])->name('med_records.destroy');
 Route::get('/med_records/{med_record}/edit', [MedRecordController::class, 'edit'])->name('med_records.edit');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MedRecord;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class MedRecordController extends Controller
@@ -12,9 +13,10 @@ class MedRecordController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        dd($request);
+        $patients = Patient::whereDoesntHave('medrecord')->get();
+        return view('med_records.create', ['patients' => $patients]);
     }
 
     public function index()
@@ -41,20 +43,33 @@ class MedRecordController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        $validated = $this->validate($request, [
+            "patient_id" => "required",
+            "blood_group" => "required",
+            "diabetes" => "required",
+            "hypertension" => "required",
+            "epilepsy" => "required",
+            "asthma" => "required",
+            "pregnancies" => "required",
+        ]);
+        $patient = MedRecord::create($validated);
+
+        $request->session()->flash('status', 'The med record was created!');
+
+        return redirect()->route('patients.show', ['patient' => $patient->id]);
+    }
+
     public function update(MedRecord $med_record, Request $request)
     {
-        //validar los datos
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
-            'password' => 'required|confirmed'
-        ]);
+
         $med_record =  MedRecord::find($med_record->id);
         $med_record->fill($request->all());
         $med_record->save();
-        $request->session()->flash('status', 'The user was updated!');
+        $request->session()->flash('status', 'The med_record was updated!');
 
-        return redirect()->route('users.index');
+        return redirect()->route('med_records.index');
     }
 
     public function destroy(MedRecord $med_record)
