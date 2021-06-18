@@ -13,9 +13,9 @@
         <span class="text-danger">*</span>
     </label>
     <select id="gender" name="gender" class="form-control" value="{{ old('gender') }}">
-        <option value="0" selected>Female</option>
-        <option value="1">Male</option>
-        <option value="2">Other</option>
+        <option value="0" selected>Mujer</option>
+        <option value="1">Hombre</option>
+        <option value="2">Otro</option>
     </select>
     <br>
     <label>Correo electronico
