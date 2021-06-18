@@ -7,7 +7,7 @@ var KTDatatableHtmlTableDemo = function() {
     // demo initializer
     var demo = function() {
 
-        var datatable = $('#kt_datatable_users').KTDatatable({
+        var datatable = $('#kt_datatable_questionnaires').KTDatatable({
             data: {
                 saveState: {cookie: false},
             },
@@ -20,7 +20,11 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'ID',
+                    field: 'nombre',
+                    width: 50,
+                },
+                {
+                    field: 'edad',
                     width: 50,
                 },
             ],
