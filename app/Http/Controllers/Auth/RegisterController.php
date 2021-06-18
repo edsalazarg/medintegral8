@@ -26,11 +26,11 @@ class RegisterController extends Controller
         'password' => 'required|confirmed'
       ]);
       //guardar datos
-      User::create([
+      $new_user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => Hash::make($request->password),
-      ]);
+      ])->assignRole($request->user_role);
 
       return redirect()->route('home.index');
     }
