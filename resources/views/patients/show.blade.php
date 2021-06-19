@@ -93,7 +93,7 @@
             <h3 class="card-label">Historial clinico</h3>
         @if(empty($patient->medrecord))
             <p>El paciente aun no tiene historial clinico</p>
-            <form action="{{route('allergies.create', $patient)}}" method="get">
+            <form action="{{route('patient_med_record.create', $patient)}}" method="get">
                 <button type="submit">Crear</button>
             </form>
         @else
@@ -139,7 +139,7 @@
             <p>El paciente aun no tiene cirugías registradas</p>
         @else
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+        <table class="table table-separate table-checkable" id="kt_datatable_2">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -172,7 +172,7 @@
             <p>El paciente aun no tiene alergias registradas</p>
         @else
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+        <table class="table table-separate table-checkable" id="kt_datatable_2">
             <thead>
             <tr>
                 <th>Alergia</th>
@@ -195,7 +195,7 @@
 
         <br>
         <h3> Citas </h3>
-        <form action="{{route('allergies.create', ['patient'=>$patient->id])}}">
+        <form action="{{route('patient_appointments.create', ['patient'=>$patient->id])}}">
             <button type="submit">Agregar</button>
         </form>
         @if(empty($patient->appointment))
@@ -203,7 +203,7 @@
 
         @else
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+        <table class="table table-separate table-checkable" id="kt_datatable_2">
             <thead>
             <tr>
                 <th>Fecha</th>
