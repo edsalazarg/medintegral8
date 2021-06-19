@@ -49,6 +49,10 @@ Route::post('/appointments/{appointment}/delete', [AppointmentController::class,
 Route::get('/questionnaire', [QuestionnaireController::class, 'index'])->name('questionnaire.index');
 Route::post('/questionnaire', [QuestionnaireController::class, 'store'])->name('questionnaire.store');
 Route::get('/questionnaire/create', [QuestionnaireController::class, 'create'])->name('questionnaire.create');
+Route::get('/questionnaire/{questionnaire}', [QuestionnaireController::class, 'show'])->name('questionnaire.show');
+Route::get('/questionnaire/{questionnaire}/edit', [QuestionnaireController::class, 'edit'])->name('questionnaire.edit');
+Route::put('/questionnaire/{questionnaire}/edit', [QuestionnaireController::class, 'update'])->name('questionnaire.update');
+Route::post('/questionnaire/{questionnaire}/delete', [QuestionnaireController::class, 'destroy'])->name('questionnaire.destroy');
 
 Route::resource('surgeries', SurgeriesController::class, ['only' => ['create','store']]);
 Route::resource('allergies', AllergiesController::class, ['only' => ['create','store']]);
