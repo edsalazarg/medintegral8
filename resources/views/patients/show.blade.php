@@ -122,6 +122,10 @@
             @else
                 <span class="label label-primary label-inline font-weight-boldest mr-2">Asma: No</span>
             @endif
+
+            @if($patient->medrecord->pregnancies > 0)
+                <span class="label label-md label-info label-inline mr-2">Embarazos: {{$patient->medrecord->pregnancies}}</span>
+            @endif
             <br><br>
         @endif
         <br>
@@ -132,7 +136,7 @@
         </form>
         @endif
         @if(empty($patient->medrecord->surgeries))
-            <p>El paciente aun no tiene cirugías</p>
+            <p>El paciente aun no tiene cirugías registradas</p>
         @else
         <!--begin: Datatable-->
         <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
@@ -165,7 +169,7 @@
         </form>
         @endif
         @if(empty($patient->medrecord->allergies))
-            <p>El paciente aun no tiene cirugías</p>
+            <p>El paciente aun no tiene alergias registradas</p>
         @else
         <!--begin: Datatable-->
         <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
