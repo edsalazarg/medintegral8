@@ -93,6 +93,9 @@
             <h3 class="card-label">Historial clinico</h3>
         @if(empty($patient->medrecord))
             <p>El paciente aun no tiene historial clinico</p>
+            <form action="{{route('allergies.create', $patient)}}" method="get">
+                <button type="submit">Crear</button>
+            </form>
         @else
                 <span class="label label-md label-info label-inline mr-2">Grupo sanguineo: {{$patient->medrecord->blood_group}}</span>
 
@@ -123,6 +126,11 @@
         @endif
         <br>
         <h3> Cirugías </h3>
+        @if(!empty($patient->medrecord))
+        <form action="{{route('patient_surgeries.create', $patient)}}">
+            <button type="submit">Agregar</button>
+        </form>
+        @endif
         @if(empty($patient->medrecord->surgeries))
             <p>El paciente aun no tiene cirugías</p>
         @else
@@ -151,6 +159,11 @@
 
         <br>
         <h3> Alergias </h3>
+        @if(!empty($patient->medrecord))
+        <form action="{{route('patient_allergies.create', ['patient'=>$patient->id])}}">
+            <button type="submit">Agregar</button>
+        </form>
+        @endif
         @if(empty($patient->medrecord->allergies))
             <p>El paciente aun no tiene cirugías</p>
         @else
@@ -178,6 +191,9 @@
 
         <br>
         <h3> Citas </h3>
+        <form action="{{route('allergies.create', ['patient'=>$patient->id])}}">
+            <button type="submit">Agregar</button>
+        </form>
         @if(empty($patient->appointment))
             <p>El paciente no tiene citas</p>
 

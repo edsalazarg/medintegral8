@@ -11,6 +11,8 @@ use App\Http\Controllers\MedRecordController;
 use App\Http\Controllers\PatientsController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\QuestionnaireController;
+use App\Http\Controllers\AllergiesController;
+use App\Http\Controllers\SurgeriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,17 +50,18 @@ Route::get('/questionnaire', [QuestionnaireController::class, 'index'])->name('q
 Route::post('/questionnaire', [QuestionnaireController::class, 'store'])->name('questionnaire.store');
 Route::get('/questionnaire/create', [QuestionnaireController::class, 'create'])->name('questionnaire.create');
 
-Route::resource('surgeries',
-    \App\Http\Controllers\SurgeriesController::class, ['only' => ['create','store']]);
-
-Route::resource('allergies',
-    \App\Http\Controllers\AllergiesController::class, ['only' => ['create','store']]);
+Route::resource('surgeries', SurgeriesController::class, ['only' => ['create','store']]);
+Route::resource('allergies', AllergiesController::class, ['only' => ['create','store']]);
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
 Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
 Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('users.edit');
 Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
+
+Route::get('patients/{patient}/allergies/create', [AllergiesController::class, 'create_for_patient'])->name('patient_allergies.create');
+
+Route::get('patients/{patient}/surgeries/create', [SurgeriesController::class, 'create_for_patient'])->name('patient_surgeries.create');
 
 Route::get('/med_records', [MedRecordController::class, 'index'])->name('med_records.index');
 Route::get('/med_records/create', [MedRecordController::class, 'create'])->name('med_records.create');
