@@ -32,6 +32,13 @@ class QuestionnaireController extends Controller
         return redirect()->route('questionnaire.index');
     }
 
+    public function show($id)
+    {
+        return view('questionnaire.show', [
+            'questionnaire' => PsychQuestionnaire::findOrFail($id)
+        ]);
+    }
+
     public function create()
     {
         $patients = Patient::all();
