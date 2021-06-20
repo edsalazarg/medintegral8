@@ -32,12 +32,25 @@ class QuestionnaireController extends Controller
     {
         $validated = $this->validate($request, [
             "patient_id" => "required",
-            "blood_group" => "required",
-            "diabetes" => "required",
-            "hypertension" => "required",
-            "epilepsy" => "required",
-            "asthma" => "required",
-            "pregnancies" => "required",
+            "self_employed" => "required",
+            "family_history" => "required",
+            "work_interfere" => "required",
+            "no_employees" => "required",
+            "remote_work" => "required",
+            "tech_company" => "required",
+            "care_options" => "required",
+            "wellness_program" => "required",
+            "seek_help" => "required",
+            "anonymity" => "required",
+            "leave" => "required",
+            "mentalhealthconsequence" => "required",
+            "physhealthconsequence" => "required",
+            "coworkers" => "required",
+            "supervisor" => "required",
+            "mentalhealthinterview" => "required",
+            "physhealthinterview" => "required",
+            "mentalvsphysical" => "required",
+            "obs_consequence" => "required",
         ]);
         $questionnaire = PsychQuestionnaire::create($validated);
 
