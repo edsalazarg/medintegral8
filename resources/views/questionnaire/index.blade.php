@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>
-                                            <form action="{{route('questionnaires.destroy', ['questionnaire' => $questionnaire->id])}}" method="POST">
+                                            <form action="{{route('questionnaire.destroy', ['questionnaire' => $questionnaire->id])}}" method="POST">
                                                 @csrf
                                                 {{--                                                @method('DELETE')--}}
                                                 <input type="submit" class="btn btn-primary font-weight-bold" value="Eliminar">
