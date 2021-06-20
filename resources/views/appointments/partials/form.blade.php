@@ -8,192 +8,174 @@
         <div class="form-group">
             @isset($patients)
                 <label>Paciente
-
+                    <span class="text-danger">*</span>
                 </label>
                 <select id="patient_id" name="patient_id" class="form-control">
                     @foreach($patients as $patient)
-                        <option value="{{$patient->id}}">{{$patient->firstName." ".$patient->lastName}}</option>
+                        <option value="{{$patient->id}}" {{ old('patient_id') == $patient->id ? 'selected' : '' }}>{{$patient->firstName." ".$patient->lastName}}</option>
                     @endforeach
                 </select>
                 <br>
-            @else
-                <label>Paciente
-
-                </label>
-                <select id="patient_id" name="patient_id" class="form-control" disabled="disabled">
-                    <option value="{{$questionnaire->patient->id}}">{{$questionnaire->patient->firstName." ".$questionnaire->patient->lastName}}</option>
-                </select>
-                <br>
             @endisset
-            <label for="self_employed">¿Trabaja por cuenta propia?</label>
-            <select id="self_employed" name="self_employed" class="form-control form-control-lg form-control-solid">
-                <option value="NA" {{ old('self_employed', optional($questionnaire ?? null)->self_employed) == 'NA' ? 'selected' : '' }}>NA</option>
-                <option value="No" {{ old('self_employed', optional($questionnaire ?? null)->self_employed) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Si" {{ old('self_employed', optional($questionnaire ?? null)->self_employed) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
-            <br>
-            <label>¿Tiene antecedentes familiares de enfermedad mental?
-
+            <label>Ubicacion
+                <span class="text-danger">*</span>
             </label>
-            <select id="family_history" name="family_history" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('family_history', optional($questionnaire ?? null)->family_history) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Si" {{ old('family_history', optional($questionnaire ?? null)->family_history) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="location" name="location"  type="text" class="form-control" placeholder="Ubicacion" value="{{ old('location', optional($appointment ?? null)->location) }}"/>
             <br>
-            <label>Si tiene una condición de salud mental, ¿siente que interfiere con su trabajo?
+            <label>Transferir a
+                <span class="text-danger">*</span>
             </label>
-            <select id="work_interfere" name="work_interfere" class="form-control form-control-lg form-control-solid">
-                <option value="NA" {{ old('work_interfere', optional($questionnaire ?? null)->work_interfere) == 'NA' ? 'selected' : '' }}>NA</option>
-                <option value="Nunca" {{ old('work_interfere', optional($questionnaire ?? null)->work_interfere) == 'Nunca' ? 'selected' : '' }}>Nunca</option>
-                <option value="Frecuentemente" {{ old('work_interfere', optional($questionnaire ?? null)->work_interfere) == 'Frecuentemente' ? 'selected' : '' }}>Frecuentemente</option>
-                <option value="Raramente" {{ old('work_interfere', optional($questionnaire ?? null)->work_interfere) == 'Raramente' ? 'selected' : '' }}>Raramente</option>
-                <option value="Algunas veces" {{ old('work_interfere', optional($questionnaire ?? null)->work_interfere) == 'Algunas veces' ? 'selected' : '' }}>Algunas veces</option>
+            <select id="transfer" name="transfer" class="form-control">
+                <option value="CUCEI" {{ old('transer') == 'CUCEI' ? 'selected' : '' }}>CUCEI</option>
+                <option value="IMSS" {{ old('transer') == 'IMSS' ? 'selected' : '' }}>IMSS</option>
+                <option value="ISSTE" {{ old('transer') == 'ISSTE' ? 'selected' : '' }}>ISSTE</option>
+                <option value="SMM" {{ old('transer') == 'SMM' ? 'selected' : '' }}>SMM</option>
+                <option value="CRM" {{ old('transer') == 'CRM' ? 'selected' : '' }}>CRM</option>
+                <option value="PRIVADO" {{ old('transer') == 'PRIVADO' ? 'selected' : '' }}>PRIVADO</option>
+                <option value="SE NIEGA" {{ old('transer') == 'SE NIEGA' ? 'selected' : '' }}>SE NIEGA</option>
             </select>
-            <br>
-            <label>¿Cuántos empleados tiene su empresa u organización?
+            <label>Notas
+                <span class="text-danger">*</span>
             </label>
-            <select id="no_employees" name="no_employees" class="form-control form-control-lg form-control-solid">
-                <option value="1-5" {{ old('no_employees', optional($questionnaire ?? null)->no_employees) == '1-5' ? 'selected' : '' }}>1-5</option>
-                <option value="6-25" {{ old('no_employees', optional($questionnaire ?? null)->no_employees) == '6-25' ? 'selected' : '' }}>6-25</option>
-                <option value="26-100" {{ old('no_employees', optional($questionnaire ?? null)->no_employees) == '26-100' ? 'selected' : '' }}>26-100</option>
-                <option value="100-500" {{ old('no_employees', optional($questionnaire ?? null)->no_employees) == '100-500' ? 'selected' : '' }}>100-500</option>
-                <option value="500-1000" {{ old('no_employees', optional($questionnaire ?? null)->no_employees) == '500-1000' ? 'selected' : '' }}>500-1000</option>
-                <option value="Mas de 1000" {{ old('no_employees', optional($questionnaire ?? null)->no_employees) == 'Mas de 1000' ? 'selected' : '' }}>Mas de 1000</option>
-            </select>
+            <input id="notes" name="notes"  type="text" class="form-control" placeholder="Notas" value="{{ old('notes', optional($appointment ?? null)->notes) }}"/>
             <br>
-            <label>¿Trabaja de forma remota (fuera de una oficina) al menos el 50% del tiempo?
+            <label>Presion sanguinea
+                <span class="text-danger">*</span>
             </label>
-            <select id="remote_work" name="remote_work" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('remote_work', optional($questionnaire ?? null)->remote_work) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Si" {{ old('remote_work', optional($questionnaire ?? null)->remote_work) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="blood_pressure" name="blood_pressure"  type="number" class="form-control" placeholder="Presion Sanguinea" value="{{ old('blood_pressure', optional($appointment ?? null)->blood_pressure) }}"/>
             <br>
-            <label>¿Su empleador es principalmente una empresa / organización de tecnología?
-
+            <label>Frecuencia cardiaca
+                <span class="text-danger">*</span>
             </label>
-            <select id="tech_company" name="tech_company" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('tech_company', optional($questionnaire ?? null)->tech_company) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Si" {{ old('tech_company', optional($questionnaire ?? null)->tech_company) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="heart_rate" name="heart_rate"  type="number" class="form-control"
+                   placeholder="Frecuencia cardiaca" value="{{ old('heart_rate', optional($appointment ?? null)->heart_rate) }}"/>
             <br>
-            <label>¿Su empleador proporciona beneficios de salud mental?
+            <label>Factor reumatico
+                <span class="text-danger">*</span>
             </label>
-            <select id="benefits" name="benefits" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('benefits', optional($questionnaire ?? null)->benefits) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="No se" {{ old('benefits', optional($questionnaire ?? null)->benefits) == 'No se' ? 'selected' : '' }}>No se</option>
-                <option value="Si" {{ old('benefits', optional($questionnaire ?? null)->benefits) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="rheumatoid_factor" name="rheumatoid_factor"  type="number" class="form-control"
+                   placeholder="Factor reumatico" value="{{ old('rheumatoid_factor', optional($appointment ?? null)->rheumatoid_factor) }}"/>
             <br>
-            <label>Conoce las opciones de atención de salud mental que ofrece su empleador?
+            <label>Temperatura
+                <span class="text-danger">*</span>
             </label>
-            <select id="care_options" name="care_options" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('care_options', optional($questionnaire ?? null)->care_options) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="No estoy seguro" {{ old('care_options', optional($questionnaire ?? null)->care_options) == 'No estoy seguro' ? 'selected' : '' }}>No estoy seguro/option>
-                <option value="Si" {{ old('care_options', optional($questionnaire ?? null)->care_options) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="temperature" name="temperature"  type="number" class="form-control"
+                   placeholder="Temperatura" value="{{ old('temperature', optional($appointment ?? null)->temperature) }}"/>
             <br>
-            <label>¿Alguna vez su empleador ha hablado de la salud mental como parte de un programa de bienestar para empleados?
+            <label>Saturacion O2
+                <span class="text-danger">*</span>
             </label>
-            <select id="wellness_program" name="wellness_program" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('wellness_program', optional($questionnaire ?? null)->wellness_program) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="No se" {{ old('wellness_program', optional($questionnaire ?? null)->wellness_program) == 'No se' ? 'selected' : '' }}>No se</option>
-                <option value="Si" {{ old('wellness_program', optional($questionnaire ?? null)->wellness_program) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="sat_o2" name="sat_o2"  type="number" class="form-control"
+                   placeholder="Saturacion O2" value="{{ old('sat_o2', optional($appointment ?? null)->sat_o2) }}"/>
             <br>
-            <label>¿Su empleador proporciona recursos para aprender más sobre problemas de salud mental y cómo buscar ayuda?
+            <label>Glucosa
+                <span class="text-danger">*</span>
             </label>
-            <select id="seek_help" name="seek_help" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('seek_help', optional($questionnaire ?? null)->seek_help) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="No se" {{ old('seek_help', optional($questionnaire ?? null)->seek_help) == 'No se' ? 'selected' : '' }}>No se</option>
-                <option value="Si" {{ old('seek_help', optional($questionnaire ?? null)->seek_help) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="glucose" name="glucose"  type="number" class="form-control"
+                   placeholder="Glucosa" value="{{ old('glucose', optional($appointment ?? null)->glucose) }}"/>
             <br>
-            <label>¿Está protegido su anonimato si elige aprovechar los recursos de tratamiento de salud mental o abuso de sustancias?
+            <label>Insulina
+                <span class="text-danger">*</span>
             </label>
-            <select id="anonymity" name="anonymity" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('anonymity', optional($questionnaire ?? null)->anonymity) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="No se" {{ old('anonymity', optional($questionnaire ?? null)->anonymity) == 'No se' ? 'selected' : '' }}>No se</option>
-                <option value="Si" {{ old('anonymity', optional($questionnaire ?? null)->anonymity) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="insulin" name="insulin"  type="number" class="form-control"
+                   placeholder="Insulina" value="{{ old('insulin', optional($appointment ?? null)->insulin) }}"/>
             <br>
-            <label>¿Qué tan fácil es para usted tomar una licencia médica por una condición de salud mental?
+            <label>Piel
+                <span class="text-danger">*</span>
             </label>
-            <select id="leave" name="leave" class="form-control form-control-lg form-control-solid">
-                <option value="No se" {{ old('leave', optional($questionnaire ?? null)->leave) == 'No se' ? 'selected' : '' }}>No se</option>
-                <option value="Muy dificil" {{ old('leave', optional($questionnaire ?? null)->leave) == 'Muy dificil' ? 'selected' : '' }}>Muy dificil</option>
-                <option value="Algo Dificl" {{ old('leave', optional($questionnaire ?? null)->leave) == 'Algo Dificl' ? 'selected' : '' }}>Algo Dificl</option>
-                <option value="Algo Facil" {{ old('leave', optional($questionnaire ?? null)->leave) == 'Algo Facil' ? 'selected' : '' }}>Algo Facil</option>
-                <option value="Muy facil" {{ old('leave', optional($questionnaire ?? null)->leave) == 'Muy facil' ? 'selected' : '' }}>Muy facil</option>
-            </select>
+            <input id="skin_thickness" name="skin_thickness"  type="number" class="form-control"
+                   placeholder="Piel" value="{{ old('skin_thickness', optional($appointment ?? null)->skin_thickness) }}"/>
             <br>
-            <label>¿Cree que discutir un problema de salud mental con su empleador tendría consecuencias negativas?
+            <label>BMI
+                <span class="text-danger">*</span>
             </label>
-            <select id="mentalhealthconsequence" name="mentalhealthconsequence" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('mentalhealthconsequence', optional($questionnaire ?? null)->mentalhealthconsequence) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="A lo mejor" {{ old('mentalhealthconsequence', optional($questionnaire ?? null)->mentalhealthconsequence) == 'A lo mejor' ? 'selected' : '' }}>A lo mejor</option>
-                <option value="Si" {{ old('mentalhealthconsequence', optional($questionnaire ?? null)->mentalhealthconsequence) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="bmi" name="bmi"  type="number" class="form-control"
+                   placeholder="BMI" value="{{ old('bmi', optional($appointment ?? null)->bmi) }}"/>
             <br>
-            <label>¿Cree que discutir un problema de salud física con su empleador tendría consecuencias negativas?
-
+            <label>DPF
+                <span class="text-danger">*</span>
             </label>
-            <select id="physhealthconsequence" name="physhealthconsequence" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('physhealthconsequence', optional($questionnaire ?? null)->physhealthconsequence) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="A lo mejor" {{ old('physhealthconsequence', optional($questionnaire ?? null)->physhealthconsequence) == 'A lo mejor' ? 'selected' : '' }}>A lo mejor</option>
-                <option value="Si" {{ old('physhealthconsequence', optional($questionnaire ?? null)->physhealthconsequence) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="dpf" name="dpf"  type="number" class="form-control"
+                   placeholder="DPF" value="{{ old('dpf', optional($appointment ?? null)->dpf) }}"/>
             <br>
-            <label>¿Estaría dispuesto a discutir un problema de salud mental con sus compañeros de trabajo?
-
+            <label>Glasgow
+                <span class="text-danger">*</span>
             </label>
-            <select id="coworkers" name="coworkers" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('coworkers', optional($questionnaire ?? null)->coworkers) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Algunos de ellos" {{ old('coworkers', optional($questionnaire ?? null)->coworkers) == 'Algunos de ellos' ? 'selected' : '' }}>Algunos de ellos</option>
-                <option value="Si" {{ old('coworkers', optional($questionnaire ?? null)->coworkers) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="glasgow" name="glasgow"  type="number" class="form-control"
+                   placeholder="Glasgow" value="{{ old('glasgow', optional($appointment ?? null)->glasgow) }}"/>
             <br>
-            <label>Estaría dispuesto a discutir un problema de salud mental con su supervisor directo?
-
+            <h6>Observaciones</h6>
+            {{--        Todos estos deberian de ser text areas--}}
+            <label>Neurologia
+                <span class="text-danger">*</span>
             </label>
-            <select id="supervisor" name="supervisor" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('supervisor', optional($questionnaire ?? null)->supervisor) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Algunos de ellos" {{ old('supervisor', optional($questionnaire ?? null)->supervisor) == 'Algunos de ellos' ? 'selected' : '' }}>Algunos de ellos</option>
-                <option value="Si" {{ old('supervisor', optional($questionnaire ?? null)->supervisor) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
+            <input id="neurologic" name="neurologic"  type="text" class="form-control"
+                   placeholder="Neurologia" value="{{ old('neurologic', optional($appointment ?? null)->neurologic) }}"/>
             <br>
-            <label>Le plantearía un problema de salud mental a un posible empleador en una entrevista?
-            </label>
-            <select id="mentalhealthinterview" name="mentalhealthinterview" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('mentalhealthinterview', optional($questionnaire ?? null)->mentalhealthinterview) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="A lo mejor" {{ old('mentalhealthinterview', optional($questionnaire ?? null)->mentalhealthinterview) == 'A lo mejor' ? 'selected' : '' }}>A lo mejor</option>
-                <option value="Si" {{ old('mentalhealthinterview', optional($questionnaire ?? null)->mentalhealthinterview) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
-            <br>
-            <label>¿Le plantearía un problema de salud física a un posible empleador en una entrevista?
-
-            </label>
-            <select id="physhealthinterview" name="physhealthinterview" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('physhealthinterview', optional($questionnaire ?? null)->physhealthinterview) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="A lo mejor" {{ old('physhealthinterview', optional($questionnaire ?? null)->physhealthinterview) == 'A lo mejor' ? 'selected' : '' }}>A lo mejor</option>
-                <option value="Si" {{ old('physhealthinterview', optional($questionnaire ?? null)->physhealthinterview) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
-            <br>
-            <label>¿Cree que su empleador se toma la salud mental tan en serio como la salud física?
-
-            </label>
-            <select id="mentalvsphysical" name="mentalvsphysical" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('mentalvsphysical', optional($questionnaire ?? null)->mentalvsphysical) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="No se" {{ old('mentalvsphysical', optional($questionnaire ?? null)->mentalvsphysical) == 'No se' ? 'selected' : '' }}>No se</option>
-                <option value="Si" {{ old('mentalvsphysical', optional($questionnaire ?? null)->mentalvsphysical) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
-            <br>
-            <label>¿Ha oído hablar u observado consecuencias negativas para compañeros de trabajo con problemas de salud mental en su lugar de trabajo?
-            </label>
-            <select id="obs_consequence" name="obs_consequence" class="form-control form-control-lg form-control-solid">
-                <option value="No" {{ old('obs_consequence', optional($questionnaire ?? null)->obs_consequence) == 'No' ? 'selected' : '' }}>No</option>
-                <option value="Si" {{ old('obs_consequence', optional($questionnaire ?? null)->obs_consequence) == 'Si' ? 'selected' : '' }}>Si</option>
-            </select>
-            <br>
+                <label>Neurologia
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="head" name="head"  type="text" class="form-control"
+                       placeholder="Cabeza" value="{{ old('head', optional($appointment ?? null)->head) }}"/>
+                <br>
+                <label>Cuello
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="neck" name="neck"  type="text" class="form-control"
+                       placeholder="Cuello" value="{{ old('neck', optional($appointment ?? null)->neck) }}"/>
+                <br>
+                <label>Cardiopulmonar
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="cardiopulmonary" name="cardiopulmonary"  type="text" class="form-control"
+                       placeholder="Cardiopulmonar" value="{{ old('cardiopulmonary', optional($appointment ?? null)->cardiopulmonary) }}"/>
+                <br>
+                <label>Abdomen
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="abdomen" name="abdomen"  type="text" class="form-control"
+                       placeholder="Abdomen" value="{{ old('abdomen', optional($appointment ?? null)->abdomen) }}"/>
+                <br>
+                <label>Extremidades
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="extremities" name="extremities"  type="text" class="form-control"
+                       placeholder="Extremidades" value="{{ old('extremities', optional($appointment ?? null)->extremities) }}"/>
+                <br>
+                <label>Diagnostico
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="diagnosis" name="diagnosis"  type="text" class="form-control"
+                       placeholder="Diagnostico" value="{{ old('diagnosis', optional($appointment ?? null)->diagnosis) }}"/>
+                <br>
+                <label>Condicion
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="condition" name="condition"  type="text" class="form-control"
+                       placeholder="Condicion" value="{{ old('condition', optional($appointment ?? null)->condition) }}"/>
+                <br>
+                <label>Tratamiento
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="treatment" name="treatment"  type="text" class="form-control"
+                       placeholder="Tratamiento" value="{{ old('treatment', optional($appointment ?? null)->treatment) }}"/>
+                <br>
+                <label>Pronostico
+                    <span class="text-danger">*</span>
+                </label>
+                <input id="forecast" name="forecast"  type="text" class="form-control"
+                       placeholder="Pronostico" value="{{ old('forecast', optional($appointment ?? null)->forecast) }}"/>
+                <br>
         </div>
     </div>
 </div>
+
+@if($errors->any())
+    <div>
+        <ul >
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
