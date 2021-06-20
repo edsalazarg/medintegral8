@@ -60,7 +60,7 @@ Route::resource('allergies', AllergiesController::class, ['only' => ['create','s
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
 Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
-Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('users.edit');
+Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
 Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
 
 Route::get('patients/{patient}/allergies/create', [AllergiesController::class, 'create_for_patient'])->name('patient_allergies.create');
@@ -81,7 +81,6 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('can:
 
 Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 Route::post('/login', [LoginController::class, 'store']);
-
 Route::post('/logout', [LogoutController::class, 'store'])->name('auth.logout');
 
 
