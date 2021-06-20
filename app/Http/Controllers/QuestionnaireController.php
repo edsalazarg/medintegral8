@@ -15,7 +15,7 @@ class QuestionnaireController extends Controller
 
     public function create()
     {
-        $patients = Patient::whereDoesntHave('questionnaire')->get();
+        $patients = Patient::whereDoesntHave('psychquestionnaires')->get();
         return view('questionnaire.create', ['patients' => $patients]);
     }
 
