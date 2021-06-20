@@ -84,4 +84,10 @@ class QuestionnaireController extends Controller
             'questionnaire' => PsychQuestionnaire::findOrFail($id)
         ]);
     }
+
+    public function destroy(PsychQuestionnaire $questionnaire)
+    {
+        $questionnaire->delete();
+        return back();
+    }
 }

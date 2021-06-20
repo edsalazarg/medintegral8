@@ -86,8 +86,9 @@ class AppointmentController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy(Appointment $appointment)
     {
-
+        $appointment->delete();
+        return back();
     }
 }
