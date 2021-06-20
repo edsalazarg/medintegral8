@@ -25,7 +25,7 @@ var KTDatatableHtmlTableDemo = function() {
                 },
                 {
                     field: 'Diabetes',
-                    width: 70,
+                    width: 60,
                 },
                 {
                     field: 'Hipertension',
@@ -37,7 +37,11 @@ var KTDatatableHtmlTableDemo = function() {
                 },
                 {
                     field: 'Asma',
-                    width: 70,
+                    width: 60,
+                },
+                {
+                    field: 'Embarazos',
+                    width: 80,
                 },
             ],
         });
