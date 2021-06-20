@@ -19,6 +19,12 @@ class MedRecordController extends Controller
         return view('med_records.create', ['patients' => $patients]);
     }
 
+    public function create_for_patient(Patient $patient)
+    {
+        $patients = collect([$patient]);
+        return view('med_records.create', ['patients' => $patients]);
+    }
+
     public function index()
     {
         $med_records = MedRecord::all();

@@ -63,6 +63,14 @@ class AppointmentController extends Controller
         ]);
     }
 
+    public function create_for_patient($patient_id)
+    {
+        $patient = Patient::find($patient_id);
+        return view('appointments.create',[
+            'patients' => collect([$patient])
+        ]);
+    }
+
     public function show($id)
     {
 
@@ -78,8 +86,9 @@ class AppointmentController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy(Appointment $appointment)
     {
-
+        $appointment->delete();
+        return back();
     }
 }

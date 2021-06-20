@@ -93,6 +93,9 @@
             <h3 class="card-label">Historial clinico</h3>
         @if(empty($patient->medrecord))
             <p>El paciente aun no tiene historial clinico</p>
+            <form action="{{route('patient_med_record.create', $patient)}}" method="get">
+                <button type="submit">Crear</button>
+            </form>
         @else
                 <span class="label label-md label-info label-inline mr-2">Grupo sanguineo: {{$patient->medrecord->blood_group}}</span>
 
@@ -119,15 +122,24 @@
             @else
                 <span class="label label-primary label-inline font-weight-boldest mr-2">Asma: No</span>
             @endif
+
+            @if($patient->medrecord->pregnancies > 0)
+                <span class="label label-md label-info label-inline mr-2">Embarazos: {{$patient->medrecord->pregnancies}}</span>
+            @endif
             <br><br>
         @endif
         <br>
         <h3> Cirugías </h3>
+        @if(!empty($patient->medrecord))
+        <form action="{{route('patient_surgeries.create', $patient)}}">
+            <button type="submit">Agregar</button>
+        </form>
+        @endif
         @if(empty($patient->medrecord->surgeries))
-            <p>El paciente aun no tiene cirugías</p>
+            <p>El paciente aun no tiene cirugías registradas</p>
         @else
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+        <table class="table table-separate table-checkable" id="kt_datatable_2">
             <thead>
             <tr>
                 <th>Fecha</th>
@@ -151,11 +163,16 @@
 
         <br>
         <h3> Alergias </h3>
+        @if(!empty($patient->medrecord))
+        <form action="{{route('patient_allergies.create', ['patient'=>$patient->id])}}">
+            <button type="submit">Agregar</button>
+        </form>
+        @endif
         @if(empty($patient->medrecord->allergies))
-            <p>El paciente aun no tiene cirugías</p>
+            <p>El paciente aun no tiene alergias registradas</p>
         @else
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+        <table class="table table-separate table-checkable" id="kt_datatable_2">
             <thead>
             <tr>
                 <th>Alergia</th>
@@ -178,12 +195,15 @@
 
         <br>
         <h3> Citas </h3>
+        <form action="{{route('patient_appointments.create', ['patient'=>$patient->id])}}">
+            <button type="submit">Agregar</button>
+        </form>
         @if(empty($patient->appointment))
             <p>El paciente no tiene citas</p>
 
         @else
         <!--begin: Datatable-->
-        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable_2">
+        <table class="table table-separate table-checkable" id="kt_datatable_2">
             <thead>
             <tr>
                 <th>Fecha</th>
