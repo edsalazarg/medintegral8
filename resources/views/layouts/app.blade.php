@@ -163,7 +163,7 @@
                                         </g>
                                     </svg>
                                 </span>
-                                <span class="menu-text" style="color:black">Historial clinico
+                                <span class="menu-text" style="color:black">Historial médico
                                 </span>
                                 </a>
                                 </div>

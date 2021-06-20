@@ -6,7 +6,7 @@
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
             <div class="card-title">
-                <h3 class="card-label">Historial Medico</h3>
+                <h3 class="card-label">Historial Médico</h3>
             </div>
             <div class="card-toolbar">
                 <!--begin::Button-->
@@ -21,7 +21,7 @@
 					</g>
 				</svg>
                 <!--end::Svg Icon-->
-			</span>Crear Historial Medico</a>
+			</span>Crear Historial Médico</a>
                 <!--end::Button-->
             </div>
         </div>
@@ -118,7 +118,7 @@
                         @endif
                         <td>
                             <div>
-                                <a href="/patients/{{$med_record->patient->id}}" class="btn btn-sm btn-clean btn-icon mr-2" title="Ver Historial Medico">
+                            <a href="/patients/{{$med_record->patient->id}}" class="btn btn-sm btn-clean btn-icon mr-2" title="Ver Historial Medico">
                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/General/Visible.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -129,8 +129,7 @@
                                 </svg><!--end::Svg Icon-->
                             </span>
                                 </a>
-                                {{--                            <a href="{{route('patients.edit', ['patient' => $patient->id])}}"></a>--}}
-                                <a href="/med_records/{{$med_record->id}}/edit" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar paciente">
+                            <a href="/med_records/{{$med_record->id}}/edit" class="btn btn-sm btn-clean btn-icon mr-2" title="Editar paciente">
                             <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Design/Edit.svg-->
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -140,41 +139,41 @@
                                 </g>
                                 </svg><!--end::Svg Icon-->
                             </span>
-                                </a>
-                                {{--                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Eliminar paciente" data-toggle="modal" data-target="#exampleModal">--}}
-                                {{--                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Home/Trash.svg-->--}}
-                                {{--                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">--}}
-                                {{--                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">--}}
-                                {{--                                    <rect x="0" y="0" width="24" height="24"/>--}}
-                                {{--                                    <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>--}}
-                                {{--                                    <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>--}}
-                                {{--                                </g>--}}
-                                {{--                                </svg><!--end::Svg Icon-->--}}
-                                {{--                            </span>--}}
-                                {{--                            </a>--}}
-                                {{--                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--}}
-                                {{--                                    <div class="modal-dialog" role="document">--}}
-                                {{--                                        <div class="modal-content">--}}
-                                {{--                                            <div class="modal-header">--}}
-                                {{--                                                <h5 class="modal-title" id="exampleModalLabel">Eliminar paciente</h5>--}}
-                                {{--                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-                                {{--                                                    <i aria-hidden="true" class="ki ki-close"></i>--}}
-                                {{--                                                </button>--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="modal-body">--}}
-                                {{--                                                ¿Estas seguro que quieres eliminar al paciente?--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="modal-footer">--}}
-                                {{--                                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>--}}
-                                {{--                                                    <form action="{{route('patients.destroy', ['patient' => $patient->id])}}" method="POST">--}}
-                                {{--                                                        @csrf--}}
-                                {{--                                                        @method('DELETE')--}}
-                                {{--                                                        <input type="submit" class="btn btn-primary font-weight-bold" value="Eliminar">--}}
-                                {{--                                                    </form>--}}
-                                {{--                                            </div>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
+                            </a>
+                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Eliminar historial clinico" data-toggle="modal" data-target='{{"#exampleModal_$med_record->id"}}'>
+                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo3/dist/../src/media/svg/icons/Home/Trash.svg-->
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24"/>
+                                        <path d="M6,8 L18,8 L17.106535,19.6150447 C17.04642,20.3965405 16.3947578,21 15.6109533,21 L8.38904671,21 C7.60524225,21 6.95358004,20.3965405 6.89346498,19.6150447 L6,8 Z M8,10 L8.45438229,14.0894406 L15.5517885,14.0339036 L16,10 L8,10 Z" fill="#000000" fill-rule="nonzero"/>
+                                        <path d="M14,4.5 L14,3.5 C14,3.22385763 13.7761424,3 13.5,3 L10.5,3 C10.2238576,3 10,3.22385763 10,3.5 L10,4.5 L5.5,4.5 C5.22385763,4.5 5,4.72385763 5,5 L5,5.5 C5,5.77614237 5.22385763,6 5.5,6 L18.5,6 C18.7761424,6 19,5.77614237 19,5.5 L19,5 C19,4.72385763 18.7761424,4.5 18.5,4.5 L14,4.5 Z" fill="#000000" opacity="0.3"/>
+                                    </g>
+                                </svg><!--end::Svg Icon-->
+                            </span>
+                            </a>
+                            <div class="modal fade" id='{{"exampleModal_$med_record->id"}}' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar historial médico</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i aria-hidden="true" class="ki ki-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¿Estas seguro que quieres eliminar el historial médico del paciente:{{$med_record->patient->firstName." ".$med_record->patient->lastName}}?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>
+                                            <form action="{{route('med_records.destroy', ['med_record' => $med_record->id])}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="submit" class="btn btn-primary font-weight-bold" value="Eliminar">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </td>
                     </tr>
