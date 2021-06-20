@@ -73,12 +73,18 @@ class AppointmentController extends Controller
 
     public function show($id)
     {
-
+        $appointment = Appointment::find($id);
+        return view('appointments.show', [
+            'appointment' => $appointment
+        ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-
+        $appointment = Appointment::find($id);
+        return view('appointments.edit', [
+            'appointment' => $appointment
+        ]);
     }
 
     public function update(Request $request)
