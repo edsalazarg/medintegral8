@@ -64,8 +64,9 @@ Route::get('/users/{user}/update', [UsersController::class, 'edit'])->name('user
 Route::post('/users/{user}/update', [UsersController::class, 'update'])->name('users.update');
 
 Route::get('patients/{patient}/allergies/create', [AllergiesController::class, 'create_for_patient'])->name('patient_allergies.create');
-
 Route::get('patients/{patient}/surgeries/create', [SurgeriesController::class, 'create_for_patient'])->name('patient_surgeries.create');
+Route::get('patients/{patient}/appointments/create', [AppointmentController::class, 'create_for_patient'])->name('patient_appointments.create');
+Route::get('patients/{patient}/med_record/create', [MedRecordController::class, 'create_for_patient'])->name('patient_med_record.create');
 
 Route::get('/med_records', [MedRecordController::class, 'index'])->name('med_records.index');
 Route::get('/med_records/create', [MedRecordController::class, 'create'])->name('med_records.create');
@@ -75,8 +76,8 @@ Route::delete('/med_records/{med_record}', [MedRecordController::class, 'destroy
 Route::get('/med_records/{med_record}/edit', [MedRecordController::class, 'edit'])->name('med_records.edit');
 Route::put('/med_records/{med_record}/edit', [MedRecordController::class, 'update'])->name('med_records.update');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->name('auth.register')->middleware('can:access.users');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('can:access.users');
 
 Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 Route::post('/login', [LoginController::class, 'store']);
