@@ -59,6 +59,7 @@
                     <th title="hypertension">Hipertension</th>
                     <th title="epilepsy">Epilepsia</th>
                     <th title="asthma">Asma</th>
+                    <th title="pregnancies">Embarazos</th>
                     <th title="actions">Acciones</th>
                 </tr>
                 </thead>
@@ -116,6 +117,9 @@
                                 <span class="label label-primary label-inline">No</span>
                             </td>
                         @endif
+                        <td>
+                            <span class="label label-info label-inline">{{$med_record->pregnancies}}</span>
+                        </td>
                         <td>
                             <div>
                             <a href="/patients/{{$med_record->patient->id}}" class="btn btn-sm btn-clean btn-icon mr-2" title="Ver Historial Medico">
