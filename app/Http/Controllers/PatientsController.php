@@ -66,4 +66,19 @@ class PatientsController extends Controller
 
         return redirect()->route('patients.index');
     }
+
+    public function score_prediction(Request $request, Patient $patient)
+    {
+        if ($request->score_psych != null)
+        {
+            $patient->psych_pred_review = $request->score_psych;
+        }
+        if ($request->score_diabetes != null)
+        {
+            $patient->diabetes_pred_review = $request->score_diabetes;
+        }
+        $patient->save();
+
+        return back();
+    }
 }

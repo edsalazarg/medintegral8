@@ -247,6 +247,32 @@
         @else
             <span class="label label-dark label-inline mr-2">Tratamiento psicológico: Desconocido aún</span>
         @endif
+
+        @if($patient->psych_pred != 'None' or $patient->diabetes_pred != 'None')
+            <div class="card mt-3 w-25">
+                <div class="card-body">
+                    <h4 class="card-title">Calificar predicciones</h4>
+                    <form method="post" action="{{route('patients.score_prediction', $patient)}}">
+                        @csrf
+                        @if($patient->psych_pred != 'None')
+                            <h6 class=" card-subtitle">Psiquiatría</h6>
+                            <select class="form-control" name="score_psych">
+                                <option value=1>Correcta</option>
+                                <option value=0>Incorrecta</option>
+                            </select>
+                        @endif
+                        @if($patient->diabetes_pred != 'None')
+                            <h6 class="card-subtitle mt-3">Diabetes</h6>
+                            <select class="form-control" name="score_diabetes">
+                                <option value=1>Correcta</option>
+                                <option value=0>Incorrecta</option>
+                            </select>
+                        @endif
+                        <button class="btn btn-primary mt-3" type="submit">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 @endsection

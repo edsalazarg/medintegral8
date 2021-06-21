@@ -37,6 +37,7 @@ Route::get('/patients/{patient}', [PatientsController::class, 'show'])->name('pa
 Route::get('/patients/{patient}/edit', [PatientsController::class, 'edit'])->name('patients.edit');
 Route::put('/patients/{patient}/edit', [PatientsController::class, 'update'])->name('patients.update');
 Route::post('/patients/{patient}/delete', [PatientsController::class, 'destroy'])->name('patients.destroy');
+Route::post('patients/{patient}/score_prediction', [PatientsController::class, 'score_prediction'])->name('patients.score_prediction');
 
 Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
 Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
