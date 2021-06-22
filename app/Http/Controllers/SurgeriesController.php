@@ -43,4 +43,12 @@ class SurgeriesController extends Controller
 
         return redirect()->route('patients.show', ['patient' => $surgery->med_record->patient_id]);
     }
+
+    public function destroy(Surgeries $surgerie)
+    {
+        $surgerie->delete();
+        session()->flash('status', 'Se removió la cirugía');
+
+        return back();
+    }
 }

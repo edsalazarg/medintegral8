@@ -38,4 +38,10 @@ class AllergiesController extends Controller
         $request->session()->flash('status', 'The allergy was created!');
         return redirect()->route('patients.show', ['patient' => $allergy->med_record->patient_id]);
     }
+    public function destroy(Allergies $allergie)
+    {
+        $allergie->delete();
+        session()->flash('status', 'Se removió la alergia');
+        return back();
+    }
 }

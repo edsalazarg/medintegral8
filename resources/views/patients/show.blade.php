@@ -144,6 +144,7 @@
             <tr>
                 <th>Fecha</th>
                 <th>Cirugía</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -151,6 +152,12 @@
                 <tr>
                     <td>{{$surgery->date}}</td>
                     <td>{{$surgery->surgery}}</td>
+                    <td>
+                        <form class="float-right" action="{{route('surgeries.destroy', $surgery)}}" method="post">
+                            @csrf
+                            <button class="btn btn-light btn-text-danger btn-hover-text-danger btn-sm btn-pill font-weight-bold" type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             <tr>
@@ -176,12 +183,19 @@
             <thead>
             <tr>
                 <th>Alergia</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach($patient->medrecord->allergies as $allergy)
                 <tr>
                     <td>{{$allergy->allergy}}</td>
+                    <td>
+                        <form class="float-right" action="{{route('allergies.destroy', $allergy)}}" method="post">
+                            @csrf
+                            <button class="btn btn-light btn-text-danger btn-hover-text-danger btn-sm btn-pill font-weight-bold" type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             <tr>
@@ -207,24 +221,29 @@
             <thead>
             <tr>
                 <th>Fecha</th>
-                <th>Lugar</th>
                 <th>Notas</th>
                 <th>Diagnostíco</th>
                 <th>Condición</th>
                 <th>Tratamiento</th>
                 <th>Pronóstico</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach($patient->appointment as $appointment)
                 <tr>
                     <td>{{$appointment->created_at->format('d/m/Y')}}</td>
-                    <td>{{$appointment->location}}</td>
                     <td>{{$appointment->notes}}</td>
                     <td>{{$appointment->diagnosis}}</td>
                     <td>{{$appointment->condition}}</td>
                     <td>{{$appointment->treatment}}</td>
                     <td>{{$appointment->forecast}}</td>
+                    <td>
+                        <form class="float-right" action="{{route('appointments.destroy', $appointment)}}" method="post">
+                            @csrf
+                            <button class="btn btn-light btn-text-danger btn-hover-text-danger btn-sm btn-pill font-weight-bold" type="submit">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

@@ -56,7 +56,10 @@ Route::put('/questionnaire/{questionnaire}/edit', [QuestionnaireController::clas
 Route::post('/questionnaire/{questionnaire}/delete', [QuestionnaireController::class, 'destroy'])->name('questionnaire.destroy');
 
 Route::resource('surgeries', SurgeriesController::class, ['only' => ['create','store']]);
+Route::post('/surgeries/{surgerie}', [SurgeriesController::class, 'destroy'])->name('surgeries.destroy');
+
 Route::resource('allergies', AllergiesController::class, ['only' => ['create','store']]);
+Route::post('/allergies/{allergie}', [AllergiesController::class, 'destroy'])->name('allergies.destroy');
 
 Route::get('/users', [UsersController::class, 'index'])->name('users.index');
 Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');

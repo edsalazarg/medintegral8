@@ -95,6 +95,7 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         $appointment->delete();
+        session()->flash('status', 'Se removió la cita');
         return back();
     }
 }
