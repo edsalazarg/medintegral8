@@ -51,11 +51,8 @@
                 <table class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_appointments">
                     <thead>
                     <tr>
-                        {{--                    <th title="id">ID</th>--}}
-                        <th title="nombre">Fecha</th>
-                        {{--                    <th title="email">Email</th>--}}
-                        {{--                    <th title="departamento">Departamento</th>--}}
-                        <th title="place">Lugar</th>
+                        <th title="fecha">Fecha</th>
+                        <th title="nombre">Nombre</th>
                         <th title="email">Notas</th>
                         <th title="email">Diagnóstico</th>
                         <th title="email">Condición</th>
@@ -81,7 +78,7 @@
                                 {{--                            {{$patient->department}}--}}
                                 {{--                        </td>--}}
                                 <td>
-                                    {{$appointment->location}}
+                                    {{$appointment->patient->firstName." ".$appointment->patient->lastName}}
                                 </td>
                                 <td>
                                     {{$appointment->notes}}
