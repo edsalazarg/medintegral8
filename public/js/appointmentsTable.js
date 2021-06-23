@@ -20,8 +20,16 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'nombre',
-                    width: 70,
+                    field: 'Fecha',
+                    width: 75,
+                },
+                {
+                    field: 'Nombre',
+                    width: 75,
+                },
+                {
+                    field: 'Notas',
+                    width: 180,
                 },
             ],
         });

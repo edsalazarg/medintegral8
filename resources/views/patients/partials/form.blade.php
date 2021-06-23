@@ -1,3 +1,6 @@
+
+
+<div class="card-body">
 <div class="form-group">
     <label>Nombre
         <span class="text-danger">*</span>
@@ -58,7 +61,7 @@
         <option value="CDU" {{ old('site') == 'CDU' ? 'selected' : '' }}>CDU</option>
     </select>
 </div>
-
+</div>
 @if($errors->any())
     <div>
         <ul >
