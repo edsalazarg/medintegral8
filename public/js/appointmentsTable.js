@@ -20,7 +20,7 @@ var KTDatatableHtmlTableDemo = function() {
             },
             columns: [
                 {
-                    field: 'Lugar',
+                    field: 'nombre',
                     width: 70,
                 },
             ],
