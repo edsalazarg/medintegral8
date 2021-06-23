@@ -3,9 +3,13 @@
 @section('title', 'Create the Allergy')
 
 @section('content')
-    <form action="{{route('allergies.store')}}" method="POST">
-        @csrf
-        @include('allergies.partials.form')
-        <div><input type="submit" value="Create"></div>
-    </form>
+    <div class="card card-custom">
+        <div class="card-body">
+            <form action="{{route('allergies.store')}}" method="POST">
+                @csrf
+                @include('allergies.partials.form')
+                <button class="btn btn-primary btn-shadow btn-sm" type="submit">Agregar</button>
+            </form>
+        </div>
+    </div>
 @endsection
