@@ -252,35 +252,43 @@
 
         <h3> Predicciones </h3>
         @if($patient->diabetes_pred == "1")
-            <span class="label label-danger label-pill label-inline mr-2">Diabetes: Muy probable</span>
+            <span class="label label-danger label-pill label-inline mr-2 pr-0">Diabetes: Muy probable
+                <x-prediction_review :result="$patient->diabetes_pred_review"/>
+            </span>
         @elseif($patient->diabetes_pred == "0")
-            <span class="label label-primary label-inline font-weight-boldest mr-2">Diabetes: Nada probable</span>
+            <span class="label label-primary label-inline font-weight-boldest mr-2 pr-0">Diabetes: Nada probable
+                <x-prediction_review :result="$patient->diabetes_pred_review"/>
+            </span>
         @else
             <span class="label label-dark label-inline mr-2">Diabetes: Desconocido aún</span>
         @endif
 
         @if($patient->psych_pred == "1")
-            <span class="label label-danger label-pill label-inline mr-2">Tratamiento psicológico: Muy probable</span>
+            <span class="label label-danger label-pill label-inline mr-2 pr-0">Tratamiento psicológico: Muy probable
+                <x-prediction_review :result="$patient->psych_pred_review"/>
+            </span>
         @elseif($patient->psych_pred == "0")
-            <span class="label label-primary label-inline font-weight-boldest mr-2">Tratamiento psicológico: Nada probable</span>
+            <span class="label label-primary label-inline font-weight-boldest mr-2 pr-0">Tratamiento psicológico: Nada probable
+                <x-prediction_review :result="$patient->psych_pred_review"/>
+            </span>
         @else
             <span class="label label-dark label-inline mr-2">Tratamiento psicológico: Desconocido aún</span>
         @endif
 
-        @if($patient->psych_pred != 'None' or $patient->diabetes_pred != 'None')
+        @if(($patient->psych_pred != 'None' and $patient->psych_pred_review == 'None') or ($patient->diabetes_pred != 'None' and $patient->diabetes_pred_review == 'None'))
             <div class="card mt-3 w-25">
                 <div class="card-body">
                     <h4 class="card-title">Calificar predicciones</h4>
                     <form method="post" action="{{route('patients.score_prediction', $patient)}}">
                         @csrf
-                        @if($patient->psych_pred != 'None')
+                        @if($patient->psych_pred != 'None' and $patient->psych_pred_review == 'None')
                             <h6 class=" card-subtitle">Psiquiatría</h6>
                             <select class="form-control" name="score_psych">
                                 <option value=1>Correcta</option>
                                 <option value=0>Incorrecta</option>
                             </select>
                         @endif
-                        @if($patient->diabetes_pred != 'None')
+                        @if($patient->diabetes_pred != 'None' and $patient->diabetes_pred_review == 'None')
                             <h6 class="card-subtitle mt-3">Diabetes</h6>
                             <select class="form-control" name="score_diabetes">
                                 <option value=1>Correcta</option>
