@@ -35,7 +35,7 @@
                     <form action="{{route('questionnaire.store')}}" method="POST">
                         @csrf
                         @include('questionnaire.partials.form')
-                        <div><input type="submit" value="Crear"></div>
+                        <div><input class="btn btn-primary btn-block" type="submit" value="Crear"></div>
                     </form>
                 </div>
             @endif

@@ -37,7 +37,7 @@
                     <form action="{{route('med_records.store')}}" method="POST">
                         @csrf
                         @include('med_records.partials.form')
-                        <div><input type="submit" value="Crear"></div>
+                        <div><input class="btn btn-primary btn-block" type="submit" value="Crear"></div>
                     </form>
                 </div>
             @endif

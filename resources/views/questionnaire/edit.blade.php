@@ -7,6 +7,6 @@
         @csrf
         @method('PUT')
         @include('questionnaire.partials.form')
-        <input type="submit" value="Actualizar" class="btn btn-primary btn-block">
+        <input class="btn btn-primary btn-block" type="submit" value="Actualizar" class="btn btn-primary btn-block">
     </form>
 @endsection
