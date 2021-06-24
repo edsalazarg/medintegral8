@@ -15,7 +15,7 @@
             <form action="{{route('patients.store')}}" method="POST">
                 @csrf
                 @include('patients.partials.form')
-                <div><input type="submit" value="Create"></div>
+                <div><input type="submit" value="Crear"></div>
             </form>
         </div>
     </div>

@@ -13,7 +13,7 @@
             <form action="{{route('appointments.store')}}" method="POST">
                 @csrf
                 @include('appointments.partials.form')
-                <div><input type="submit" value="Create"></div>
+                <div><input type="submit" value="Crear"></div>
             </form>
         </div>
     </div>
