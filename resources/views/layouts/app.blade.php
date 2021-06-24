@@ -30,7 +30,27 @@
 
 <!--Jairo start-->
 <!--begin::Main-->
-<div style="margin: auto; width: 75%" class="">
+<div style="margin: auto; width: 70%" class="">
+    <span style="float: right">
+        @guest
+            <a href="{{route('auth.login')}}">Login</a>
+            <a style="padding: 20px" href="{{route('auth.register')}}">Register</a>
+        @endguest
+        @auth
+            <form style="display: inline-block" action="{{ route('auth.logout') }}" method="post">
+              @csrf
+                <div>
+                <span class="label label-pill label-inline">Usuario: {{Auth::user()->name}}</span>
+                </div>
+                    <button class="btn btn-light-primary font-weight-bolder" aria-haspopup="true" aria-expanded="false">
+                    <span class="svg-icon svg-icon-md">
+                        <!--begin::Svg Icon | path:/metronic/theme/html/demo3/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
+                        </span>Cerrar sesion
+                </button>
+{{--              <button>Logout</button>--}}
+          </form>
+        @endauth
+      </span>
     <div class="container ">
         @if(session('status'))
             <div style="background-color: red">
@@ -167,28 +187,6 @@
                             </li>
                             <br>
                             <!--end::Item-->
-                        <li>
-                            <span style="position: absolute; bottom: 1vw">
-                            @guest
-                            <a href="{{route('auth.login')}}">Login</a>
-                            <a style="padding: 20px" href="{{route('auth.register')}}">Register</a>
-                            @endguest
-                            @auth
-                                <form style="display: inline-block" action="{{ route('auth.logout') }}" method="post">
-                                    @csrf
-                                    <div>
-                                    <span class="label label-pill label-inline">Usuario: {{Auth::user()->name}}</span>
-                                    </div>
-                                    <button class="btn btn-light-primary btn-sm font-weight-bolder" aria-haspopup="true" aria-expanded="false">
-                                        <span class="svg-icon svg-icon-md">
-                                            <!--begin::Svg Icon | path:/metronic/theme/html/demo3/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
-                                        </span>Cerrar sesion
-                                    </button>
-                {{--              <button>Logout</button>--}}
-                                </form>
-                            @endauth
-                            </span>
-                        </li>
                     </ul>
                     <!--end::Nav-->
                 </div>
